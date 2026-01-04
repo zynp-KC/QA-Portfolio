@@ -4,3 +4,6 @@
 - Regression Testing: Testing to ensure new changes do not break existing feautures.
 - Positive Testing: Using valid inputs.
 - Negative Testing: Using invalid or unexpected inputs. 
+
+#### Test cases are documented in Excel file:
+Login_TestCases__SauceDemo.xlsx
