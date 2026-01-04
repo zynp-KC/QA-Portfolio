@@ -5,5 +5,10 @@
 - Positive Testing: Using valid inputs.
 - Negative Testing: Using invalid or unexpected inputs. 
 
-#### Test cases are documented in Excel file:
+### Test cases are documented in Excel file:
 Login_TestCases__SauceDemo.xlsx
+
+### Note
+SauceDemo uygulamasında password için minimum karakter gereksinimi belirtilmemiştir.
+Bu nedenle Baundary Value Analysis örneği, varsayımsal bir requirement üzerinden hazırlanmıştır.
+Amaç test tasarım tekniğini göstermektir.
