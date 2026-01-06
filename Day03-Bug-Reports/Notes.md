@@ -1,1 +1,14 @@
-
+### Bug / Defect Nedir?
+- Bug: Yazılımın çalışması sırasında beklenmeyen veya hatalı davranışa neden olan kodlama hatasıdır.
+- Defect: Yazılımın beklenen gereksinimlerden veya tanımlanan özellliklerden sapmasını ifade eden daha geniş bir terimdir.
+- Her bug bir defecttir, ancak her defect mutlaka bir bug olmayabilir (eksik veya yanlış gereksinimler de defecttir).
+- "Hata buldum" demek yeterli değildir; önemli olan bu hatayı doğru ve anlaşılır şekilde raporlamaktır.
+- QA'nın sorumluluğu, hatayı çözmek değil; geliştiricinin problemi net şekilde anlayabilmesi için doğru bug raporu hazırlamaktır.
+- Profesyonel bir bug raporunda genellikle şu bilgiler yer alır:
+   - Bug ID
+   - Summary / Description
+   - Environment / Version
+   - Steps to Reproduce
+   - Expected Result
+   - Actual Result
+   - Severity & Priority
