@@ -12,3 +12,16 @@
    - Expected Result
    - Actual Result
    - Severity & Priority
+
+### Bug Lifecycle
+- Bug lifecycle, bir hatanın ilk raporlanmasından kapatılmasına kadar geçtiği tüm aşamaları ifade eder
+- Genel akış şu şekildedir:
+  New —> Assigned —> Open —> Fixed —> Retest —> Closed / Reopened
+  
+Örnek (Login Bug):
+- Kullanıcı geçerli bilgilerle login olamıyorsa, QA bu durumu bir bug olarak raporlar ve bug durumu NEW olarak atanır.
+- Bug ile ilgili geliştiriciye atandığında durum ASSIGNED olur.
+- Geliştirici hatayı incelemeye başladığında bug durumu OPEN olarak güncellenir.
+- Hata geliştirici tarafından düzeltildiğinde bug durumu FIXED olarak işaretlenir.
+- QA, düzeltmenin doğru çalışıp çalışmadığını kontrol etmek için yeniden test yapar (RETEST).
+- Eğer login başarılı çalışıyorsa bug CLOSSED durumuna getirilir; sorun devam ediyorsa bug REOPENED olarak tekrar açılır.
