@@ -25,3 +25,20 @@
 - Hata geliştirici tarafından düzeltildiğinde bug durumu FIXED olarak işaretlenir.
 - QA, düzeltmenin doğru çalışıp çalışmadığını kontrol etmek için yeniden test yapar (RETEST).
 - Eğer login başarılı çalışıyorsa bug CLOSSED durumuna getirilir; sorun devam ediyorsa bug REOPENED olarak tekrar açılır.
+
+Severity & Priority
+- Severity: Hatanın uygulama üzerindeki etkisini açıklar (Önem derecesi).
+- Priority: Hata giderme aciliyetiyle ilgilidir (Düzeltilme önceliği).
+- Severity & Priority: Sorunun önemi ve giderilme aciliyetine bağlı olarak öncelik derecesi yüksek / orta / düşük olabilir.
+
+| Bug              | Severity | Priority |
+| ---------------- | -------- | -------- |
+| Login çalışmıyor | Critical | High     |
+| UI hizası bozuk  | Low      | Low      |
+
+**Örnek:**
+Login butonu bazı tarayıcılarda çalışmıyorsa:
+- Severity: High (kullanıcı login olamaz)
+- Priority: Medium (sadece belirli tarayıcıyı etkiliyor)
+
+Bu örnek, bir bug'un etkisinin yüksek olmasına rağmen aciliyetinin orta seviyede olabileceğini gösterir.
