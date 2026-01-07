@@ -3,4 +3,6 @@
 - **Boundary Value Analysis:** Özellikle giriş değerlerinin **sınırlarında** test case'ler oluşturur çünkü hatalar genellikle sınır çevresinde görülür(minimum, minimum+1, maksimum-1, maksimum gibi).
 -  Bu iki teknik birlikte kulllanıldığında daha az test ile daha iyi coverage sağlanır.
 
-BVA Test Cases Note: Test tasarımı amacıyla password doğrulama kuralı varsayılmıştır.
+**Not:** BVA testleri için password doğrulama kuralı test tasarımı amacıyla varsayılmıştır.
+
+**Username alanı için ECP kullanıldı.**
