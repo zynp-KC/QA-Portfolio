@@ -17,4 +17,9 @@
 - In Progress: Düzeltme yapılır
 - Fixed: Developer tamamladı
 - Retest: QA tekrar test eder
-- Closed / Reopened: Sonuçlanır 
+- Closed / Reopened: Sonuçlanır
+
+
+### JIRA Practice
+- SauceDemo login için 1 bug JIRA üzerinde açıldı.
+- Bug Lifecycle ve priority mantığı uygulandı.
