@@ -6,6 +6,17 @@
 - QA Engineer, test sonuçlarını doğru dokümante ederek ürün kalitesine katkı sağlar.
 
 
+### Severity vs Priority — Real Life QA Thinking
+- Severity refers to the impact of a defect on the system.
+- Priority refers to how urgently the defect should be fixed from a business perspective.
+
+
+### Bug Impact Analysis Examples
+| Bug Summary | Severity | Priority | Reason |
+|-------------|----------|----------|--------|
+| Login button active when fields are empty| Medium | Medium | Kullanıcı yanlış yönlendirilir ama login engellenir|
+| Error message not cleared after successful login| Low | Medium |  İşlev çalışıyor ama UX bozuk
+
 
 ### Test Summary Report — SauceDemo Login
 
@@ -15,6 +26,7 @@
 - Başarılı test case: 3
 - Başarısız test case: 1
 - Açık bug sayısı: 0
+
 
 #### Genel Değerlendirme:
 Login fonksiyonu temel senaryolarda çalışmaktadır.
