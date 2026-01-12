@@ -1,5 +1,5 @@
 ## QA-Portfolio
-Manual and Automotion QA training portfolio (Test cases, bug reports, API, sql etc.)
+Manual and Automotion QA training portfolio (Test cases, bug reports, API, sql, JIRA practice etc.)
 
 
 ### Covered Topics
@@ -11,31 +11,35 @@ Manual and Automotion QA training portfolio (Test cases, bug reports, API, sql e
 - Bug Reporting & Bug Lifecycle
 - Severity & Priority Analysis
 
+---
 
 ### Tools
 - Github
-- Excel (Test Cases & Bug Reports)
+- Excel
+- JIRA
 
+---
 
 ### Test Application
 - SauceDemo (Login functionality)
 
+---
 
-### What I Practiced
+### What I Practiced Week-1
 - Writing proffesional test cases
 - Designing efficient test scenarios
 - Reporting bugs with clear reproduction steps
 - Analyzing bugs based on severity and business priority
 
+---
 
-## Severity vs Priority — Real Life QA Thinking
-- Severity refers to the impact of a defect on the system.
-- Priority refers to how urgently the defect should be fixed from a business perspective.
+### Portfolio Structure
+- Day-based hands-on QA practices
+- Week 2: Advanced Manual QA & JIRA
+- Upcoming: API Testing & SQL
 
+---
 
-### Bug Impact Analysis Examples
-| Bug Summary | Severity | Priority | Reason |
-|-------------|----------|----------|--------|
-| Login button active when fields are empty| Medium | Medium | Kullanıcı yanlış yönlendirilir ama login engellenir|
-| Error message not cleared after successful login| Low | Medium |  İşlev çalışıyor ama UX bozuk
-
+### Goal
+To bulid strong manual QA foundations and progress towards
+API testing, SQL validation, and automation basics.
