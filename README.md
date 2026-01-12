@@ -38,3 +38,8 @@ Manual and Automotion QA training portfolio (Test cases, bug reports, API, sql, 
 - Week 2: Advanced Manual QA & JIRA
 - Upcoming: API Testing & SQL
 
+---
+
+### Goal
+To bulid strong manual QA foundations and progress towards
+API testing, SQL validation, and automation basics.
