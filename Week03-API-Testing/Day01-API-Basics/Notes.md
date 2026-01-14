@@ -22,4 +22,4 @@
 ### Endpoint
 - Endpoint, API'de belirli bir kaynağa erişilen URL yoludur.
 - Base URL + endpoint birlikte tam API adresini oluşturur.
-- Örnek: GET /posts — post verilerini getirir.
+- Örnek: GET /posts —> post verilerini getirir.
