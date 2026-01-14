@@ -3,10 +3,10 @@
 - API testing, frontend'e bağlı kalmadan backend servislerinin doğruluğunu test etmeyi amaçlar.
 - API testlerinde genellikle HTTP protokolü kullanır.
 - En yakın HTTP metotları:
-   - GET — Veri almak
-   - POST — Veri oluşturmak
-   - PUT — Veri güncellemek
-   - DELETE — Veri silmek
+   - GET —> Veri almak
+   - POST —> Veri oluşturmak
+   - PUT —> Veri güncellemek
+   - DELETE —> Veri silmek
 - API testleri hızlıdr, otomasyona uygundur ve erken bug yakalamayı sağlar.
 - Manual QA'lar için API testing, sistemin gerçek davranışını anlamada kritik rol oynar.
 
@@ -36,3 +36,10 @@
 - 201 Created: Yeni bir kaynak başarıyla oluşturuldu.
 - 400 Bad Request: İstek hatalı veya eksik veri içeriyor.
 - 404 Not Found: Endpoint bulunamadı.
+
+
+### Negative POST Request Observation
+- Eksik body ile POST request gönderildi.
+- Gerçek bir backend sistemde bu durumda **400 Bad Request** beklenir.
+- Ancak JSONPlaceholder bir **mock API** olduğu için input validation yapmaz.
+- Bu nedenle eksik veri ile yapılan POST isteğine rağmen **201 Created** döndürmektedir.
