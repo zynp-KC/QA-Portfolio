@@ -17,3 +17,9 @@
 - Response body is in JSON format.
 - Each object represents a post with userId, id, title, and body fields.
 - The GET request returned 100 objects in the response body.
+
+
+### Endpoint
+- Endpoint, API'de belirli bir kaynağa erişilen URL yoludur.
+- Base URL + endpoint birlikte tam API adresini oluşturur.
+- Örnek: GET /posts — post verilerini getirir.
