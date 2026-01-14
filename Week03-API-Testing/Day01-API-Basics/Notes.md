@@ -23,3 +23,9 @@
 - Endpoint, API'de belirli bir kaynağa erişilen URL yoludur.
 - Base URL + endpoint birlikte tam API adresini oluşturur.
 - Örnek: GET /posts —> post verilerini getirir.
+
+
+### POST Request
+- POST request, sunucuya yeni veri göndermek için kullanılır.
+- Request body içinde gönderilen veriler JSON formatındadır.
+- Başarılı bir POST genellikle 201 Created status code döner.
