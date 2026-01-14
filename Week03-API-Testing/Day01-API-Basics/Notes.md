@@ -29,3 +29,10 @@
 - POST request, sunucuya yeni veri göndermek için kullanılır.
 - Request body içinde gönderilen veriler JSON formatındadır.
 - Başarılı bir POST genellikle 201 Created status code döner.
+
+
+### HTTP Status Codes
+- 200 OK: Request başarılı ve veri döndü.
+- 201 Created: Yeni bir kaynak başarıyla oluşturuldu.
+- 400 Bad Request: İstek hatalı veya eksik veri içeriyor.
+- 404 Not Found: Endpoint bulunamadı.
