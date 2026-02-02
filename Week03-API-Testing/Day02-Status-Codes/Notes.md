@@ -17,3 +17,9 @@
 - **Request**: GET /posts/abc
 - **Expected**: 404 Not Found
 - **Result**: 404 returned
+
+
+## Summary
+- Negative GET requests were tested to verify API error handling.
+- Invalid ID, non-existing resource, and wrong endpoint scenarios correctly returned **404 Not Found**.
+- Postman response screenshots are included as evidence.
