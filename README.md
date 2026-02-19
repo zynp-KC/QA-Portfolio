@@ -1,5 +1,5 @@
 # QA-Portfolio
-This repository is my Manual and Automation QA training portfolio, containing test cases, bug reports, API and SQL practice, and JIRA exercises.
+This repository is my Manual and Automation QA training portfolio, containing structured hands-on practice in Manual Testing, API Testing, SQL validation, and QA investigation scenarios.
 
 ## Covered Topics
 - SDLC & STLC
@@ -9,6 +9,8 @@ This repository is my Manual and Automation QA training portfolio, containing te
 - Equivalance Partitioning (ECP)
 - Bug Reporting & Bug Lifecycle
 - Severity & Priority Analysis
+- API Testing Fundamentals
+- SQL for QA & Database Validation
 
 ---
 
@@ -16,16 +18,19 @@ This repository is my Manual and Automation QA training portfolio, containing te
 - Git & Github
 - Excel
 - JIRA
+- Postman
+- SQL
 
 ---
 
 ## Test Application
 - SauceDemo (Login functionality)
+- Public REST APIs (API validation practice)
 
 ---
 
 ## Weekly Practice
-### Week 1
+### Week 1 - Manual Testing Foundations
 - Writing professional test cases
 - Designing efficient test scenarios
 - Reporting bugs with clear reproduction steps
@@ -33,18 +38,35 @@ This repository is my Manual and Automation QA training portfolio, containing te
 
 ---
 
-### Week 2
+### Week 2 - Advanced Manual QA & JIRA
 - Advanced Manual QA & JIRA practice
 
 ---
 
-### Upcoming
-- API Testing & SQL validation
+### Week 3 - API Testing
+- HTTP methods (GET, POST, PUT, DELETE)
+- Status code validation
+- JSON response validation
+- Request & response structure analysis
+- Mini API test checklist preparation
+
+---
+
+### Week 4 - SQL & Database Validation
+- SELECT queries
+- WHERE filtering
+- AND / OR logic
+- INNER JOIN & LEFT JOIN
+- GROUP BY & HAVING
+- Aggregation (COUNT, SUM)
+- Login Validation Case Study
 
 ---
 
 ## Portfolio Structure
+- Week-based structured progression
 - Day-based hands-on QA exercises
+- Realistic QA investigation scenarios
 
 ---
 
