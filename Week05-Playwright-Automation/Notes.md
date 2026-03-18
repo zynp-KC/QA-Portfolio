@@ -39,3 +39,24 @@ npx playwright show-report
 ## Sonuç
 - 2 test yazıldı, 2 passed ✅
 - SauceDemo login happy path doğrulandı
+
+
+
+# Day 03 — Assertions + Negatif Testler
+
+## Öğrendiklerim
+- Negatif test nedir: Sistemin hatalı durumları doğru yönetip yönetmediğini test etmek
+- `getByText()` — sayfadaki metne göre element bul
+- `toBeVisible()` — elementin görünür olduğunu doğrula
+- `ignoreHTTPSErrors: true` — SSL sertifika hatalarını atla
+
+## Test Senaryoları
+| Senaryo | Beklenen Sonuç |
+|--------|---------------|
+| Yanlış şifre | "Username and password do not match" mesajı |
+| Boş kullanıcı adı | "Username is required" mesajı |
+| Kilitli kullanıcı | "Sorry, this user has been locked out" mesajı |
+
+## Sonuç
+- 3 negatif test yazıldı, 3 passed ✅
+- Her test için otomatik screenshot alındı

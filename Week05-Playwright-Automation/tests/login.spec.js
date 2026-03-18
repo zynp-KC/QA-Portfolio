@@ -30,5 +30,5 @@ test('Login sonrası ürün listesi görünüyor', async ({ page }) => {
     // 4. Ürün listesi başlığı görünüyor mu?
     await expect(page.getByText('Products')).toBeVisible();
 
-    await page.screenshot({ path: 'secreenshots/login-success.png'});
+    await page.screenshot({ path: 'screenshots/login-success.png'});
 });
