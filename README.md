@@ -1,74 +1,55 @@
-# QA-Portfolio
-This repository is my Manual and Automation QA training portfolio, containing structured hands-on practice in Manual Testing, API Testing, SQL validation, and QA investigation scenarios.
+# QA Engineering Portfolio
 
-## Covered Topics
-- SDLC & STLC
-- Manual Testing Fundamentals
-- Test Case Design
-- Boundary Value Analysis (BVA)
-- Equivalance Partitioning (ECP)
-- Bug Reporting & Bug Lifecycle
-- Severity & Priority Analysis
-- API Testing Fundamentals
-- SQL for QA & Database Validation
+[![Playwright Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml)
 
----
+A structured QA training portfolio with hands-on practice in Manual Testing, 
+API Testing, SQL Validation, and E2E Automation.
 
 ## Tools
-- Git & Github
-- Excel
-- JIRA
-- Postman
-- SQL
 
----
+Git & GitHub · Excel · JIRA · Postman · SQL · Playwright
 
-## Test Application
-- SauceDemo (Login functionality)
-- Public REST APIs (API validation practice)
+## Project Structure
+```
+QA-Portfolio/
+├── Day01-SDLC-STLC/
+├── Day02-Login-TestCases/
+├── Day03-Bug-Reports/
+├── Day04-Test-Design-Techniques/
+├── Week02-Advanced-QA/
+├── Week03-API-Testing/
+├── Week04-SQL/
+└── Week05-Playwright-Automation/
+```
 
----
+## Weekly Progress
 
-## Weekly Practice
-### Week 1 - Manual Testing Foundations
-- Writing professional test cases
-- Designing efficient test scenarios
-- Reporting bugs with clear reproduction steps
-- Analyzing bugs based on severity and business priority
+### Week 1 — Manual Testing Foundations
+- Test case design using BVA & Equivalence Partitioning
+- Bug reporting with severity & priority analysis
 
----
+### Week 2 — Advanced Manual QA & JIRA
+- Test planning, regression & smoke testing
+- Bug lifecycle management with JIRA
 
-### Week 2 - Advanced Manual QA & JIRA
-- Advanced Manual QA & JIRA practice
+### Week 3 — API Testing
+- GET, POST, PUT, DELETE methods with Postman
+- Status code & JSON response validation
+- Mini API test checklist
 
----
+### Week 4 — SQL & Database Validation
+- SELECT, WHERE, AND/OR, JOIN queries
+- Aggregation functions (COUNT, SUM)
+- Login validation case study
 
-### Week 3 - API Testing
-- HTTP methods (GET, POST, PUT, DELETE)
-- Status code validation
-- JSON response validation
-- Request & response structure analysis
-- Mini API test checklist preparation
+### Week 5 — E2E Automation with Playwright ✅
+- 6 automated tests across 3 browsers (Chromium, Firefox, WebKit)
+- Login happy path & 3 negative scenarios
+- Page Object Model architecture
+- CI/CD integration with GitHub Actions
+- Automated screenshots & HTML reports
 
----
+## 🎯 Goal
 
-### Week 4 - SQL & Database Validation
-- SELECT queries
-- WHERE filtering
-- AND / OR logic
-- INNER JOIN & LEFT JOIN
-- GROUP BY & HAVING
-- Aggregation (COUNT, SUM)
-- Login Validation Case Study
-
----
-
-## Portfolio Structure
-- Week-based structured progression
-- Day-based hands-on QA exercises
-- Realistic QA investigation scenarios
-
----
-
-## Goal
-To build strong Manual QA foundations and progress towards API testing, SQL validation, and Automation basics.
+To build strong QA foundations and grow into a well-rounded QA Engineer
+with skills in Manual Testing, API Testing, SQL, and Test Automation.
