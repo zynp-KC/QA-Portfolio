@@ -28,3 +28,4 @@ jobs:
         name: playwright-report
         path: Week05-Playwright-Automation/playwright-report/
         retention-days: 30
+        
