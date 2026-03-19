@@ -60,3 +60,29 @@ npx playwright show-report
 ## Sonuç
 - 3 negatif test yazıldı, 3 passed ✅
 - Her test için otomatik screenshot alındı
+
+
+
+# Day 04 — Page Object Model
+
+## POM nedir?
+Sayfayla ilgili tüm elementleri ve aksiyonları ayrı bir class'ta toplamak.
+Testler sadece "ne test ediyorum" sorusuna odaklanır, "nasıl buluyorum" değil.
+
+## Neden kullanıyoruz?
+- Kod tekrarını önler
+- Element değişince sadece 1 yerde düzeltirsin
+- Testler daha okunabilir olur
+
+## Öğrendiklerim
+- `class LoginPage` — sayfa class'ı
+- `constructor` — elementleri tanımla
+- `page.locator()` — element seçici
+- `test.beforeEach()` — her testten önce çalışır
+- `module.exports` — class'ı dışa aktar
+- `require()` — class'ı içe aktar
+
+## Sonuç
+- LoginPage.js oluşturuldu ✅
+- login.spec.js ve login-negative.spec.js POM'a geçirildi ✅
+- 6 test, 6 passed ✅

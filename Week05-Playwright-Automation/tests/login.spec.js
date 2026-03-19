@@ -1,34 +1,20 @@
 const { test, expect } = require('@playwright/test');
+const { LoginPage } = require('../pages/LoginPage');
+
+test.beforeEach(async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+});
 
 test('Geçerli kullanıcı ile login olunuyor', async ({ page }) => {
-    // 1. Siteye git
-    await page.goto('https://www.saucedemo.com');
-
-    // 2. Kullanıcı adı ve şifre gir
-    await page.fill('#user-name', 'standard_user');
-    await page.fill('#password', 'secret_sauce');
-
-    // 3. Login butonuna tıkla
-    await page.click('#login-button');
-
-    // 4. Doğru sayfaya geçildi mi?
+    const loginPage = new LoginPage(page);
+    await loginPage.login('standard_user', 'secret_sauce');
     await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
 });
 
-
 test('Login sonrası ürün listesi görünüyor', async ({ page }) => {
-    // 1. Siteye git
-    await page.goto('https://www.saucedemo.com');
-
-    // 2. getByPlaceholder ile input bul ve doldur
-    await page.getByPlaceholder('Username').fill('standard_user');
-    await page.getByPlaceholder('Password').fill('secret_sauce');
-
-    // 3. getByRole ile butonu bul ve tıkla
-    await page.getByRole('button', { name: 'Login' }).click();
-
-    // 4. Ürün listesi başlığı görünüyor mu?
+    const loginPage = new LoginPage(page);
+    await loginPage.login('standard_user', 'secret_sauce');
     await expect(page.getByText('Products')).toBeVisible();
-
-    await page.screenshot({ path: 'screenshots/login-success.png'});
+    await page.screenshot({ path: 'screenshots/login-success.png' });
 });
