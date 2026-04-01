@@ -7,7 +7,7 @@ API Testing, SQL Validation, and E2E Automation.
 
 ## Tools
 
-Git & GitHub · Excel · JIRA · Postman · SQL · Playwright
+Git & GitHub · Excel · JIRA · Postman · SQL · Playwright · Firebase Test Lab
 
 ## Project Structure
 ```
@@ -19,10 +19,11 @@ QA-Portfolio/
 ├── Week02-Advanced-QA/
 ├── Week03-API-Testing/
 ├── Week04-SQL/
-└── Week05-Playwright-Automation/
+├── Week05-Playwright-Automation/
+└── Week06-Mobile-Testing/
 ```
 
-## Weekly Progress
+## Weekly Progress 
 
 ### Week 1 — Manual Testing Foundations
 - Test case design using BVA & Equivalence Partitioning
@@ -42,14 +43,21 @@ QA-Portfolio/
 - Aggregation functions (COUNT, SUM)
 - Login validation case study
 
-### Week 5 — E2E Automation with Playwright ✅
+### Week 5 — E2E Automation with Playwright 
 - 6 automated tests across 3 browsers (Chromium, Firefox, WebKit)
 - Login happy path & 3 negative scenarios
 - Page Object Model architecture
 - CI/CD integration with GitHub Actions
 - Automated screenshots & HTML reports
 
+### Week 6 — Mobile Testing  ✅
+- Manual login test cases for X (Twitter) on iOS
+- Real bug reporting with Jira (TrednyolGo)
+- Firebase Test Lab - Robo test on real Android device
+- Android vs iOS comparison (WhatsApp)
+- Exploratory testing (Spotify) 
+
 ## 🎯 Goal
 
 To build strong QA foundations and grow into a well-rounded QA Engineer
-with skills in Manual Testing, API Testing, SQL, and Test Automation.
+with skills in Manual Testing, API Testing, SQL, Test Automation, and Mobile Testing.
