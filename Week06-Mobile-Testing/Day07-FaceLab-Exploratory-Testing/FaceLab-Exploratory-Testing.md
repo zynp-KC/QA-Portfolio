@@ -35,7 +35,7 @@ iOS ve Android platformlarında manuel keşif (exploratory) testi yapılmıştı
 | Video düzenleme  | Mevcut | Yok | Farklı |
 | Yüzsüz fotoğraf uyarısı | Anlamlı uyarı + butonlar | Anlamlı uyarı + butonlar | Aynı |
 | Açılış süresi | ~2 sn | ~3-5 sn | Farklı |
-| Support e-posta linki (Kullanım Şartları) | Çalışıyor | Bağlantı hatası veriyor | - |
+| Support e-posta linki (Kullanım Şartları) | Çalışıyor | Bağlantı açılmıyor, ancak Ayarlar -> Destek yoluyla e-posta gönderilebiliyor | Farklı |
 | Donma / çökme | Gözlemlenmedi | Düzenleme kaydı sonrası bir kere dondu | Farklı |
 | Metin taşması / layout | Gözlemlenmedi | Gözlemlenmedi | Aynı |
 | Buton boyutları | Normal, tutarlı | Normal, tutarlı | Aynı |
