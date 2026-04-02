@@ -27,7 +27,7 @@
 | Açılış süresi | ~2 sn | ~3-5 sn | Farklı |
 | Support e-posta linki | Çalışıyor | Bağlantı hatası veriyor | Bug |
 | Donma / çökme | Gözlemlenmedi | Düzenleme kaydı sonrası bir kere dondu | Farklı |
-| Metin taşması / layout | Gözlemlenmedi | Aynı |
+| Metin taşması / layout | Gözlemlenmedi | Gözlemlenmedi | Aynı |
 | Buton boyutları | Normal, tutarlı | Normal, tutarlı | Aynı |
 
 ---
