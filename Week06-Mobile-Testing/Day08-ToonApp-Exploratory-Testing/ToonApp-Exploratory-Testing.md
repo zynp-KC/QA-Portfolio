@@ -34,14 +34,12 @@ iOS ve Android platformlarında manuel keşif (exploratory) testi yapılmıştı
 | Video modları | Mevcut — dans modu, mimik modu vb. | Yok (eski sürüm) | Farklı |
 | Galeri izni | Fotoğraf seçiminde özel erişim bildirimi çıkıyor, kapatılabiliyor | Tüm galeri için izin isteniyor | Farklı |
 | İzin reddedilince | Ayarlara yönlendiren bilgilendirme butonu çıkıyor | Ayarlara yönlendiren bilgilendirme butonu çıkıyor | Aynı |
-| İzin kaldırma yönlendirmesi | Yok, kullanıcı telefon ayarlarına kendisi gitmeli | Yok, kullanıcı telefon ayarlarına kendisi gitmeli | Aynı |
 | Galeri paylaş akışı | Çalışmıyor — uygulama açılmıyor | Çalışmıyor — uygulama açılıyor ama fotoğraf kayboluyor | Farklı |
 | Karikatür / anime oluşturma | Başarılı | Başarılı | Aynı |
 | Yüzsüz fotoğraf uyarısı | Test edilmedi | Anlamlı uyarı çıkıyor | — |
 | Yüz çok uzaksa uyarı | Test edilmedi | Anlamlı uyarı çıkıyor | — |
-| Arka planda işlem | Görsel oluşturulurken gezinmeye devam edilebiliyor | Anime oluşturulurken gezinmeye devam edilebiliyor | Aynı |
+| Arka planda işlem | Görsel/video oluşturulurken gezinmeye devam edilebiliyor | Anime oluşturulurken gezinmeye devam edilebiliyor | Aynı |
 | İnternetsiz — giriş | Direkt uyarı veriyor |  Efekte tıklayıp fotoğraf seçtikten sonra uyarı çıkıyor, geç kalıyor | Farklı |
-| Geri bildirim formu | Boş bırakılınca "Gönder" butonu tıklanabiliyor, boş form gönderilebiliyor | Test edilmedi | — |
 | Destek butonu | Mail uygulamasına yönlendiriyor, çalışıyor | Mail uygulamasına yönlendiriyor, çalışıyor | Aynı |
 | Bizi değerlendirin | App Store'a yönlendiriyor, çalışıyor | Play Store'a yönlendiriyor, çalışıyor | Aynı |
 | Bulut depolama bildirimi | Bazı modlarda içerik bulutta saklanacağı bildirimi çıkıyor | Test edilmedi | — |
@@ -122,16 +120,14 @@ iOS'ta aynı akışta uygulama hiç açılmıyor — her iki platformda farklı 
 |---|----------|-------|----------|
 | 1 | Android | Ödeme ekranı fiyat ve kredi detaylarını öne çıkaracak şekilde güncellenmeli | UX |
 | 2 | Android | İnternetsiz kullanımda uyarı efekt seçiminden önce gösterilmeli | UX |
-| 3 | iOS | Geri bildirim formu boş bırakıldığında "Gönder" butonu deaktif olmalı | UX |
-| 4 | Her ikisi | İzin kaldırılınca ayarlara yönlendirme eklenmeli | UX |
-| 5 | Android | Açılış süresi performans testi yapılmalı (~10-11 sn vs iOS ~2.5 sn) | Performans |
+| 3 | Android | Açılış süresi performans testi yapılmalı (~10-11 sn vs iOS ~2.5 sn) | Performans |
 
 ---
 
 ## Pozitif Bulgular
 
 - Karikatür / anime oluşturma her iki platformda başarılı
-- Görsel oluşturulurken arka planda gezinmeye devam edilebiliyor
+- Görsel / video oluşturulurken arka planda gezinmeye devam edilebiliyor
 - Destek butonu her iki platformda mail uygulamasına yönlendiriyor, çalışıyor
 - İzin reddedilince ayarlara yönlendirme her iki platformda çalışıyor
 - Android'de yüzsüz veya yüzü çok uzak fotoğraflarda anlamlı uyarı mesajları çıkıyor
