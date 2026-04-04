@@ -3,9 +3,16 @@
 [![Playwright Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml)
 
 A structured QA training portfolio with hands-on practice in Manual Testing, 
-API Testing, SQL Validation, and E2E Automation.
+API Testing, SQL Validation, E2E Automation and Mobile Testing.
 
-## Tools
+## 📊 Portfolio Stats
+- 📋 Total Test Cases: 35+
+- 🐛 Total Bug Reports: 7
+- 🤖 Automated Tests: 6 (across 3 browsers)
+- 📱 Apps Tested: X, TrendyolGo, Whatsapp, Spotify, FaceLab, ToonApp
+- 🔧 Platforms: iOS & Android
+
+## 🛠 Tools
 
 Git & GitHub · Excel · JIRA · Postman · SQL · Playwright · Firebase Test Lab
 
@@ -23,15 +30,17 @@ QA-Portfolio/
 └── Week06-Mobile-Testing/
 ```
 
-## Weekly Progress 
+## 📅 Weekly Progress 
 
 ### Week 1 — Manual Testing Foundations
 - Test case design using BVA & Equivalence Partitioning
 - Bug reporting with severity & priority analysis
+- SDLC & STLC documentation
 
 ### Week 2 — Advanced Manual QA & JIRA
 - Test planning, regression & smoke testing
 - Bug lifecycle management with JIRA
+- Agile & Scrum fundamentals
 
 ### Week 3 — API Testing
 - GET, POST, PUT, DELETE methods with Postman
@@ -41,7 +50,7 @@ QA-Portfolio/
 ### Week 4 — SQL & Database Validation
 - SELECT, WHERE, AND/OR, JOIN queries
 - Aggregation functions (COUNT, SUM)
-- Login validation case study
+- Login failure investigation case study
 
 ### Week 5 — E2E Automation with Playwright 
 - 6 automated tests across 3 browsers (Chromium, Firefox, WebKit)
@@ -52,10 +61,11 @@ QA-Portfolio/
 
 ### Week 6 — Mobile Testing  ✅
 - Manual login test cases for X (Twitter) on iOS
-- Real bug reporting with Jira (TrednyolGo)
-- Firebase Test Lab - Robo test on real Android device
-- Android vs iOS comparison (WhatsApp)
-- Exploratory testing (Spotify) 
+- Real bug reporting with Jira (TrendyolGo — MATP-1)
+- Firebase Test Lab - Robo test on real Android device (119 actions)
+- Android vs iOS comparison (WhatsApp - 10+ differences)
+- Exploratory testing (Spotify, FaceLab, ToonApp)
+- Cross-platform bug reporting (FaceLab MATP-2, ToonApp TOONAPP-01/02) 
 
 ## 🎯 Goal
 
