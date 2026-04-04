@@ -1,6 +1,6 @@
 # Test Plan - OrangeHRM
 - **Version:** 1.0
-- **Date:** 2025-04-05
+- **Date:** 2026-04-05
 - **Prepared by:** Zeynep KC
 - **Environment:** Demo Web + Mobile (iOS & Android)
 
@@ -8,7 +8,7 @@
 
 ## 1. Introduction
 
-OrangeHRM is a Human Resource Management application used by HR administrators and company employess to manage employee data, leave requests, recruitment processes and performance evaluations.
+OrangeHRM is a Human Resource Management application used by HR administrators and company employees to manage employee data, leave requests, recruitment processes and performance evaluations.
 
 Two primary user roles exist with different access levels:
 
@@ -46,7 +46,7 @@ Two primary user roles exist with different access levels:
 | Login / Authentication | Functional, Security, Cross-platform |
 | PIM - Employee Management | Functional, Data Validation, Role-based |
 | Leave Management | Functional, Business Rules, Edge Cases |
-| Recritment | Functional, End-to-End Flow |
+| Recruitment | Functional, End-to-End Flow |
 
 ### Out of Scope
 
@@ -97,8 +97,7 @@ Two primary user roles exist with different access levels:
 | Login security vulnerabilities | Low | High | P1 |
 | Unauthorized role-based access | Low | High | P1 |
 | Recruitment pipeline data loss | Medium | Medium | P2 |
-| Cross-browser UI inconsistencies | High | Medium | P2 |
-| My Actions / Reminders data loss | Medium | Medium | P2 | 
+| Cross-browser UI inconsistencies | High | Medium | P2 | 
 | Partial localization errors | High | Low | P3 |
 
 ---
