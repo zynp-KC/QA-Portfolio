@@ -6,7 +6,7 @@ A structured QA training portfolio with hands-on practice in Manual Testing,
 API Testing, SQL Validation, E2E Automation and Mobile Testing.
 
 ## 📊 Portfolio Stats
-- 📋 Total Test Cases: 35+
+- 📋 Total Test Cases: 80+
 - 🐛 Total Bug Reports: 7
 - 🤖 Automated Tests: 6 (across 3 browsers)
 - 📱 Apps Tested: X, TrendyolGo, Whatsapp, Spotify, FaceLab, ToonApp
