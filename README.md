@@ -29,6 +29,7 @@ QA-Portfolio/
 ├── Day02-Login-TestCases/
 ├── Day03-Bug-Reports/
 ├── Day04-Test-Design-Techniques/
+├── open-source-contributions
 ├── Week02-Advanced-QA/
 ├── Week03-API-Testing/
 ├── Week04-SQL/
@@ -36,6 +37,14 @@ QA-Portfolio/
 ├── Week06-Mobile-Testing/
 └── Week07-OrangeHRM/
 ```
+
+---
+
+## 🌍 Open Source Contributions
+
+| Project | Issue | Contribution |
+|---|---|---|
+| KiwiTCMS | [#4066 — Datetime formatting not human-friendly](https://github.com/kiwitcms/Kiwi/issues/4066) | Reproduced issue on public test environment, provided steps to reproduce with expected/actual results |
 
 ---
 
