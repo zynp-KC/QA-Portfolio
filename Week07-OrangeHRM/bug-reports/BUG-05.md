@@ -1,19 +1,24 @@
 ## BUG-05
-- **Title:** Brute force — no account lockout
-- **Module:** Login
+
+- **ID:** BUG-05
+- **Title:** No account lockout after multiple failed login attempts
+- **Module:** Login / Security
 - **Severity:** High
 - **Priority:** P1
 - **Status:** Open
-- **Environment:** 
-    - Web: https://opensource-demo.orangehrmlive.com
-    - Browser: Chrome
-    - OS: Windows 11
+- **Environment:**
+  - Web: [OrangeHRM demo](https://opensource-demo.orangehrmlive.com/)
+  - Browser: Chrome
+  - OS: Windows 11
+- **Preconditions:**
+  - Valid username is available
+  - User is on the login page
 - **Steps to Reproduce:**
-    1. Navigate to https://opensource-demo.orangehrmlive.com
-    2. Enter valid username: Admin
-    3. Enter invalid password: invalidpass123
-    4. Click login button
-    5. Repeat steps 2-4 five times consecutively
-- **Expected Result:** Account should be locked after multiple failed login attempts. Warning message displayed.
-- **Actual Result:** Account remains accessible after multiple failed attempts. No lockout mechanism triggered.
-- **Screenshot:** Not available — observed during exploratory session
+  1. Open the OrangeHRM demo site
+  2. Enter `Admin` in the username field
+  3. Enter an invalid password
+  4. Click the **Login** button
+  5. Repeat steps 2–4 five times consecutively
+- **Expected Result:** The account should be temporarily locked after multiple failed login attempts, and a warning message should be displayed.
+- **Actual Result:** The account remains accessible after repeated failed login attempts, and no lockout mechanism is triggered.
+- **Attachment:** Not available — observed during exploratory session

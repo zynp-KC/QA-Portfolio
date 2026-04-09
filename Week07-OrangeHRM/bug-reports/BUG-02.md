@@ -1,18 +1,22 @@
 ## BUG-02
-- **Title:** Forgot password 504 error
-- **Module:** Login
+
+- **ID:** BUG-02
+- **Title:** Forgot Password returns 504 Gateway Timeout error
+- **Module:** Login / Forgot Password
 - **Severity:** High
-- **Priority:** P2 
+- **Priority:** P2
 - **Status:** Open
 - **Environment:**
-    - Web: https://opensource-demo.orangehrmlive.com
-    - Browser: Chrome
-    - OS: Windows 11
+  - Web: [OrangeHRM demo](https://opensource-demo.orangehrmlive.com/)
+  - Browser: Chrome
+  - OS: Windows 11
+- **Preconditions:**
+  - User is on the login page
 - **Steps to Reproduce:**
-    1. Navigate to https://opensource-demo.orangehrmlive.com
-    2. Click "Forgot your password?" link
-    3. Enter username: Admin
-    4. Click Reset button
-- **Expected Result:** Password reset email should be displayed
-- **Actual Result:** 504 Gateway Time-out error
-- **Screenshot:** ![BUG-02 Forgot Password](screenshots/bug-02-504-forgot-password.PNG)
+  1. Open the OrangeHRM demo site
+  2. Click the **Forgot your password?** link
+  3. Enter `Admin` in the username field
+  4. Click the **Reset Password** button
+- **Expected Result:** The system should process the request successfully and display a password reset confirmation message.
+- **Actual Result:** A **504 Gateway Timeout** error is displayed instead of the expected confirmation.
+- **Attachment:** ![BUG-02 Forgot Password](screenshots/bug-02-504-forgot-password.PNG)
