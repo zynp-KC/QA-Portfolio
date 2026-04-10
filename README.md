@@ -29,13 +29,13 @@ QA-Portfolio/
 ├── Day02-Login-TestCases/
 ├── Day03-Bug-Reports/
 ├── Day04-Test-Design-Techniques/
-├── open-source-contributions
 ├── Week02-Advanced-QA/
 ├── Week03-API-Testing/
 ├── Week04-SQL/
 ├── Week05-Playwright-Automation/
 ├── Week06-Mobile-Testing/
-└── Week07-OrangeHRM/
+├── Week07-OrangeHRM/
+└── open-source-contributions/
 ```
 
 ---
@@ -45,6 +45,8 @@ QA-Portfolio/
 | Project | Issue | Contribution |
 |---|---|---|
 | KiwiTCMS | [#4066 — Datetime formatting not human-friendly](https://github.com/kiwitcms/Kiwi/issues/4066) | Reproduced issue on public test environment, provided steps to reproduce with expected/actual results |
+| KiwiTCMS | [#4060 — Missing entries in Change History for Test Run](https://github.com/kiwitcms/Kiwi/issues/4060) | Reproduced issue on public test environment, documented missing audit trail entries |
+| Appwrite | [#11857 — queries[] shorthand syntax returns 400 Syntax Error](https://github.com/appwrite/appwrite/issues/11857) | Discovered and reported API query syntax inconsistency on Appwrite Cloud v1.9.0. |
 
 ---
 
