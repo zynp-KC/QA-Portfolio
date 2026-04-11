@@ -47,6 +47,7 @@ QA-Portfolio/
 | KiwiTCMS | [#4066 — Datetime formatting not human-friendly](https://github.com/kiwitcms/Kiwi/issues/4066) | Reproduced issue on public test environment, provided steps to reproduce with expected/actual results |
 | KiwiTCMS | [#4060 — Missing entries in Change History for Test Run](https://github.com/kiwitcms/Kiwi/issues/4060) | Reproduced issue on public test environment, documented missing audit trail entries |
 | Appwrite | [#11857 — queries[] shorthand syntax returns 400 Syntax Error](https://github.com/appwrite/appwrite/issues/11857) | Discovered and reported API query syntax inconsistency on Appwrite Cloud v1.9.0. |
+| WordPress iOS | [#25493 — About screen X link opens blank webview](https://github.com/wordpress-mobile/WordPress-iOS/issues/25493) | Discovered and reported deep link bug through exploratory testing on iPhone 13 |
 
 ---
 
