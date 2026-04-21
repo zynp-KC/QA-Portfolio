@@ -1,7 +1,7 @@
 # Risk Matrix — Demoblaze E-Commerce
 
 **Project:** Demoblaze E-Commerce
-**Date:** 2026-04-20
+**Date:** 2026-04-21
 **Prepared by:** Zeynep KC
 
 ---
@@ -50,7 +50,3 @@
 | High + Medium | → | P2 |
 | Low + Any | → | P3 |
 | Any + Low | → | P3 |
-
----
-
-**Last Updated:** 2026-04-21
