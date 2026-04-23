@@ -16,7 +16,7 @@
     4. Navigate to Cart page
     5. Observe the cart
 - **Expected Result:** Product should be successfully added to cart and visible in cart
-- **Priority:** Medium
+- **Priority:** High
 - **Status:** Not Executed
 
 ---
@@ -47,7 +47,7 @@
     5. Click "Delete" button next to the product
     6. Observe the cart
 - **Expected Result:** Product should be successfully removed from cart
-- **Priority:** Medium
+- **Priority:** High
 - **Status:** Not Executed
 
 ---
@@ -80,7 +80,7 @@
     4. Navigate to Cart page
     5. Observe total price
 - **Expected Result:** Total price should equal the sum of all products in cart
-- **Priority:** Medium
+- **Priority:** High
 - **Status:** Not Executed
 
 ---
