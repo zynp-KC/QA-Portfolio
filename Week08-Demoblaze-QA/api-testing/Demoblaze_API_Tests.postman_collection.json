@@ -1,0 +1,334 @@
+{
+  "info": {
+    "_postman_id": "95d3a0b0-05a7-4f7f-b092-477eb4a08204",
+    "name": "Demoblaze API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51457720",
+    "_collection_link": "https://go.postman.co/collection/51457720-95d3a0b0-05a7-4f7f-b092-477eb4a08204?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "POST Signup — Valid credentials",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"testzeynep\",\r\n    \"password\": \"Test1234!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/signup",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Signup — Duplicate username",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"testzeynep\",\r\n    \"password\": \"Test1234!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/signup",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Login — Valid credentials",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"testzeynep\",\r\n    \"password\": \"Test1234!\"\r\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Login — Invalid password",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"testzeynep\",\r\n    \"password\": \"wrongpassword\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Product list",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseUrl}}/entries",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "entries"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Filter by Category",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cat\": \"phone\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/bycat",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "bycat"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Product Detail",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/view",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "view"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Add to Cart",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": \"1\",\r\n    \"cookie\": \"{{authToken}}\",\r\n    \"prod_id\": \"1\",\r\n    \"flag\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addtocart",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addtocart"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST View Cart",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cookie\": \"{{authToken}}\",\r\n    \"flag\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/viewcart",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "viewcart"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Delete Cart Item",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cookie\": \"{{authToken}}\",\r\n    \"id\": \"1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/deleteitem",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "deleteitem"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Delete Cart (Place Order)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cookie\": \"{{authToken}}\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/deletecart",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "deletecart"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST View Cart — Invalid Token (Negative Test)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cookie\": \"invalidtoken123\",\r\n    \"flag\": false\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/viewcart",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "viewcart"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
