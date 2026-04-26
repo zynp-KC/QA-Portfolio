@@ -58,5 +58,5 @@
 
 ---
 
-**Signed:** Zeynep KC — QA Engineer
-**Date:** 2026-04-27
+- **Signed:** Zeynep KC — QA Engineer
+- **Date:** 2026-04-27
