@@ -1,6 +1,6 @@
 # Accessibility Report — Demoblaze E-Commerce
 
-- **Date:** 2026-04-25
+- **Date:** 2026-04-26
 - **Tester:** Zeynep KC
 - **Tool:** axe-core via Playwright
 - **Standard:** WCAG 2.1 AA
