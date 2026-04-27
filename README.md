@@ -8,17 +8,17 @@ API Testing, SQL Validation, E2E Automation and Mobile Testing.
 ---
 
 ## 📊 Portfolio Stats
-- 📋 Total Test Cases: 80+
-- 🐛 Total Bug Reports: 17
-- 🤖 Automated Tests: 21 (across 3 browsers)
-- 📱 Apps Tested: X, TrendyolGo, WhatsApp, Spotify, FaceLab, ToonApp, OrangeHRM
+- 📋 Total Test Cases: 125+
+- 🐛 Total Bug Reports: 25+
+- 🤖 Automated Tests: 67 (across 3 browsers)
+- 📱 Apps Tested: X, TrendyolGo, WhatsApp, Spotify, FaceLab, ToonApp, OrangeHRM, Demoblaze
 - 🔧 Platforms: Web · iOS · Android
 
 ---
 
 ## 🛠 Tools
 
-Git & GitHub · Excel · JIRA · Postman · SQL · Playwright · Firebase Test Lab · Chrome DevTools
+Git & GitHub · Excel · JIRA · Postman · SQL · Playwright · Firebase Test Lab · Chrome DevTools · axe-core
 
 ---
 
@@ -35,6 +35,7 @@ QA-Portfolio/
 ├── Week05-Playwright-Automation/
 ├── Week06-Mobile-Testing/
 ├── Week07-OrangeHRM/
+├── Week08-Demoblaze-QA/
 └── open-source-contributions/
 ```
 
@@ -88,7 +89,7 @@ QA-Portfolio/
 - Exploratory testing (Spotify, FaceLab, ToonApp)
 - Cross-platform bug reporting (FaceLab MATP-2, ToonApp TOONAPP-01/02)
 
-### Week 7 — OrangeHRM Comprehensive QA Project ✅
+### Week 7 — OrangeHRM Comprehensive QA Project
 - Full test plan with risk analysis and role-based access testing
 - 45 test cases (Login, PIM, Leave Management)
 - 10 bug reports with screenshots and severity analysis
@@ -96,6 +97,17 @@ QA-Portfolio/
 - API testing — full CRUD with Postman (8 endpoints)
 - 21 Playwright automated tests across 3 browsers
 - Page Object Model architecture + CI/CD integration
+
+### Week08 — Demoblaze E-Commerce QA Capstone ✅
+- Sprint planning with user stories, test strategy and risk matrix
+- BDD scenarios with Gherkin (4 feature files, 25+ scenarios)
+- Traceability matrix (User Story ⇨ BDD ⇨ Test Case)
+- 40 manual test cases across 4 modules
+- 8 bug reports with severity analysis
+- API testing — 12 endpoints with Postman + environment variables
+- 46 Playwright automated tests across 3 browsers
+- Accessibility testing with axe-core (WCAG 2.1 AA — 10 violations)
+- Test metrics, defect analysis and release sign-off
 
 ---
 
