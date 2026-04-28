@@ -4,6 +4,7 @@ import LoginModal from '../pages/LoginModal.js';
 import CartPage from '../pages/CartPage.js';
 import CheckoutModal from '../pages/CheckoutModal.js';
 import users from '../fixtures/users.json' assert { type: 'json' };
+import checkoutData from '../fixtures/checkout.json' assert { type: 'json' };
 
 test.describe('Checkout', () => {
     let homePage;
@@ -16,44 +17,39 @@ test.describe('Checkout', () => {
         loginModal = new LoginModal(page);
         cartPage = new CartPage(page);
         checkoutModal = new CheckoutModal(page);
+
         await homePage.navigate();
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
-        await page.waitForTimeout(2000);
-        await page.keyboard.press('Escape');
-        await page.waitForTimeout(1000);
-        await page.locator('.card-title a').first().click();
-        await page.waitForTimeout(1000);
-        await page.locator('a:has-text("Add to cart")').click();
-        await page.waitForTimeout(2000);
+
+        await expect(homePage.usernameDisplay).toContainText('Welcome', { timeout: 15000 });
+
+        await homePage.addFirstProductToCart();
+
         await homePage.clickCart();
-        await page.waitForTimeout(2000);
+        await expect(cartPage.cartItems.first()).toBeVisible();
     });
 
-    test('TC-001 Successful order placement', async ({ page }) => {
+    test('TC-001 Successful order placement', async () => {
         await cartPage.placeOrder();
-        await page.waitForTimeout(1000);
-        await checkoutModal.fillForm(
-            'Test User', 'Turkey', 'Bursa',
-            '1234567890123456', '04', '2026'
-        );
+        await expect(checkoutModal.orderModal).toBeVisible();
+
+        const { name, country, city, card, month, year } = checkoutData.validOrder;
+        await checkoutModal.fillForm(name, country, city, card, month, year);
         await checkoutModal.purchase();
-        await page.waitForTimeout(2000);
-        const confirmation = page.locator('.sweet-alert h2');
-        await expect(confirmation).toBeVisible();
+
+        await expect(checkoutModal.confirmationMessage).toBeVisible();
+        await expect(checkoutModal.confirmationMessage).toContainText('Thank you');
     });
 
-    test('TC-003 Credit card accepts letters — Known Bug', async ({ page }) => {
+    test.fail('TC-003 BUG-03 Credit card field accepts letters', async () => {
         await cartPage.placeOrder();
-        await page.waitForTimeout(1000);
-        await checkoutModal.fillForm(
-            'Test User', 'Turkey', 'Bursa',
-            'abcdef', '04', '2026'
-        );
-        await checkoutModal.purchase();
-        await page.waitForTimeout(2000);
-        const confirmation = page.locator('.sweet-alert h2');
-        await expect(confirmation).toBeVisible();
-    });
+        await expect(checkoutModal.orderModal).toBeVisible();
 
+        const { name, country, city, card, month, year } = checkoutData.invalidCardOrder;
+        await checkoutModal.fillForm(name, country, city, card, month, year);
+        await checkoutModal.purchase();
+
+        await expect(checkoutModal.confirmationMessage).not.toBeVisible();
+    });
 });

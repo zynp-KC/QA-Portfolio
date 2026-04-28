@@ -5,6 +5,7 @@ class CartPage {
         this.totalPrice = page.locator('#totalp');
         this.placeOrderButton = page.locator('button:has-text("Place Order")');
         this.deleteButtons = page.locator('td a:has-text("Delete")');
+        this.orderModal = page.locator('#orderModal');
     }
 
     async getTotal() {

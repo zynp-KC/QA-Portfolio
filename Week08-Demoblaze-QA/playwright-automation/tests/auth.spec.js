@@ -14,38 +14,50 @@ test.describe('Authentication', () => {
         await homePage.navigate();
     });
 
-    test('TC-001 Successful login with valid credentials', async ({ page }) => {
+    test('TC-001 Successful login with valid credentials', async () => {
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
-        await page.waitForTimeout(2000);
-        await expect(page.locator('#nameofuser')).not.toBeVisible();
+
+        await expect(homePage.usernameDisplay).toContainText('Welcome');
     });
 
-    test('TC-002 Login with invalid password', async ({ page }) => {
+    test('TC-002 Login with invalid credentials shows error dialog', async ({ page }) => {
         await homePage.clickLogin();
+
+        const dialogPromise = page.waitForEvent('dialog');
         await loginModal.login(users.invalidUser.username, users.invalidUser.password);
-        await page.waitForTimeout(2000);
-        await expect(page.locator('#nameofuser')).not.toBeVisible();
+        const dialog = await dialogPromise;
+        await dialog.accept();
+
+        await expect(homePage.loginButton).toBeVisible();
     });
 
     test('TC-005 Successful signup', async ({ page }) => {
         const signupModal = new SignupModal(page);
+        // Her test çalışmasında unique username — Demoblaze hesap silmeyi desteklemiyor
+        const uniqueUsername = `testuser_${Date.now()}`;
+
         await homePage.clickSignup();
-        await page.waitForSelector('#sign-username');
-        await signupModal.signup(users.newUser.username, users.newUser.password);
-        await page.waitForTimeout(2000);
+        await expect(signupModal.usernameInput).toBeVisible();
+
+        // Dialog'u promise ile yakala — waitForTimeout yok
+        const dialogPromise = page.waitForEvent('dialog');
+        await signupModal.signup(uniqueUsername, users.newUser.password);
+
+        const dialog = await dialogPromise;
+        expect(dialog.message()).toContain('Sign up successful');
+        await dialog.accept();
     });
 
-    test('TC-008 Successful logout', async ({ page }) => {
+    test('TC-008 Successful logout', async () => {
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
-        await page.waitForTimeout(3000);
-        // Login modal'ı kapat
-        await page.keyboard.press('Escape');
-        await page.waitForTimeout(1000);
-        // Direkt logout linkine git
-        await page.evaluate(() => logOut());
-        await expect(page.locator('#login2')).toBeVisible();
-    });
 
+        // firefox'ta login response yavaş olduğu için timeout artırıldı
+        await expect(homePage.usernameDisplay).toContainText('Welcome', { timeout: 15000 });
+
+        await homePage.logoutButton.click();
+        await expect(homePage.loginButton).toBeVisible();
+        await expect(homePage.logoutButton).not.toBeVisible();
+    });
 });

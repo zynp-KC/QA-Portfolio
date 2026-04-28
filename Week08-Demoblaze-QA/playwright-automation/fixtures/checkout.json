@@ -1,0 +1,18 @@
+{
+    "validOrder": {
+        "name": "Test User",
+        "country": "Turkey",
+        "city": "Bursa",
+        "card": "1234567890123456",
+        "month": "04",
+        "year": "2026"
+    },
+    "invalidCardOrder": {
+        "name": "Test User",
+        "country": "Turkey",
+        "city": "Bursa",
+        "card": "abcdef",
+        "month": "04",
+        "year": "2026"
+    }
+}

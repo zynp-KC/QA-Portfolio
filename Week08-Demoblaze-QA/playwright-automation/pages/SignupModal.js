@@ -9,7 +9,8 @@ class SignupModal {
     async signup(username, password) {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
-        await this.signupButton.click();
+        // force: true — WebKit rendering uyumsuzluğu nedeniyle gerekli
+        await this.signupButton.click({ force: true });
     }
 }
 

@@ -1,3 +1,5 @@
+import { expect } from '@playwright/test';
+
 class HomePage {
     constructor(page) {
         this.page = page;
@@ -11,13 +13,17 @@ class HomePage {
         this.monitorsCategory = page.locator('a:has-text("Monitors")');
         this.nextButton = page.locator('#next2');
         this.prevButton = page.locator('#prev2');
+        this.firstProduct = page.locator('.card-title a').first();
+        this.addToCartButton = page.locator('a:has-text("Add to cart")');
+        this.productCards = page.locator('.card');
+        this.productTitles = page.locator('.card-title');
     }
 
-async navigate() {
-    await this.page.goto('/');
-}
+    async navigate() {
+        await this.page.goto('/');
+    }
 
-async clickLogin() {
+    async clickLogin() {
         await this.loginButton.click();
     }
 
@@ -43,6 +49,14 @@ async clickLogin() {
 
     async filterByMonitors() {
         await this.monitorsCategory.click();
+    }
+
+    async addFirstProductToCart() {
+        await this.firstProduct.click();
+        await expect(this.addToCartButton).toBeVisible();
+        const dialogPromise = this.page.waitForEvent('dialog');
+        await this.addToCartButton.click();
+        await dialogPromise.then(dialog => dialog.accept());
     }
 }
 

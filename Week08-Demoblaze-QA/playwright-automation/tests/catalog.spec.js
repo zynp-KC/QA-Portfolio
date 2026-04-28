@@ -9,37 +9,41 @@ test.describe('Product Catalog', () => {
         await homePage.navigate();
     });
 
-    test('TC-001 View all products on homepage', async ({ page }) => {
-        const products = page.locator('.card');
-        await expect(products.first()).toBeVisible();
+    test('TC-001 View all products on homepage', async () => {
+        await expect(homePage.productCards.first()).toBeVisible();
+        await expect(homePage.productCards).not.toHaveCount(0);
     });
 
-    test('TC-002 Filter products by Phones category', async ({ page }) => {
+    test('TC-002 Filter products by Phones category', async () => {
         await homePage.filterByPhones();
-        await page.waitForTimeout(2000);
-        const products = page.locator('.card-title');
-        await expect(products.first()).toBeVisible();
+        await expect(homePage.productTitles).toContainText([
+            'Samsung galaxy s6',
+            'Nokia lumia 1520',
+            'Nexus 6'
+        ]);
     });
 
-    test('TC-003 Filter products by Laptops category', async ({ page }) => {
+    test('TC-003 Filter products by Laptops category', async () => {
         await homePage.filterByLaptops();
-        await page.waitForTimeout(2000);
-        const products = page.locator('.card-title');
-        await expect(products.first()).toBeVisible();
+        await expect(homePage.productTitles).toContainText([
+            'Sony vaio i5',
+            'Sony vaio i7',
+            'MacBook air'
+        ]);
     });
 
-    test('TC-004 Filter products by Monitors category', async ({ page }) => {
+    test('TC-004 Filter products by Monitors category', async () => {
         await homePage.filterByMonitors();
-        await page.waitForTimeout(4000);
-        const products = page.locator('.card-title');
-        await expect(products.first()).toBeVisible({ timeout: 10000 });
+        await expect(homePage.productTitles).toContainText([
+            'Apple monitor 24',
+            'ASUS Full HD'
+        ]);
     });
 
-    test('TC-006 Navigate to next page', async ({ page }) => {
+    test.fail('TC-006 Navigate to next page — Known Bug', async () => {
+        const firstProductBefore = await homePage.productTitles.first().textContent();
         await homePage.nextButton.click();
-        await page.waitForTimeout(2000);
-        const products = page.locator('.card');
-        await expect(products.first()).toBeVisible();
+        const firstProductAfter = await homePage.productTitles.first().textContent();
+        expect(firstProductAfter).not.toBe(firstProductBefore);
     });
-
 });

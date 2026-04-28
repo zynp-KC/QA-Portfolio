@@ -1,6 +1,7 @@
 class CheckoutModal {
     constructor(page) {
         this.page = page;
+        this.orderModal = page.locator('#orderModal');
         this.nameInput = page.locator('#name');
         this.countryInput = page.locator('#country');
         this.cityInput = page.locator('#city');

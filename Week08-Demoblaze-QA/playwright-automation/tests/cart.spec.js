@@ -16,45 +16,34 @@ test.describe('Cart', () => {
         await homePage.navigate();
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
-        await page.waitForTimeout(2000);
-        // Login modalı kapat
-        await page.keyboard.press('Escape');
-        await page.waitForTimeout(1000);
+
+        // firefoxta login response yavaş olduğu için timeout artırıldı
+        await expect(homePage.usernameDisplay).toContainText('Welcome', { timeout: 15000 });
     });
 
-    test('TC-001 Add product to cart', async ({ page }) => {
-        await page.locator('.card-title a').first().click();
-        await page.waitForTimeout(2000);
-        await page.locator('a:has-text("Add to cart")').click();
-        await page.waitForTimeout(3000);
+    test('TC-001 Add product to cart', async () => {
+        await homePage.addFirstProductToCart();
+
         await homePage.clickCart();
-        await page.waitForTimeout(3000);
-        const cartItems = page.locator('#tbodyid tr');
-        await expect(cartItems.first()).toBeVisible({ timeout: 10000 });
+        await expect(cartPage.cartItems.first()).toBeVisible();
     });
 
-    test('TC-003 Remove product from cart', async ({ page }) => {
-        await page.locator('.card-title a').first().click();
-        await page.waitForTimeout(1000);
-        await page.locator('a:has-text("Add to cart")').click();
-        await page.waitForTimeout(1000);
+    test('TC-003 Remove product from cart', async () => {
+        await homePage.addFirstProductToCart();
         await homePage.clickCart();
-        await page.waitForTimeout(2000);
+        await expect(cartPage.cartItems.first()).toBeVisible();
+
+        // Sil ve doğrula
         await cartPage.deleteFirstItem();
-        await page.waitForTimeout(2000);
-        const cartItems = page.locator('#tbodyid tr');
-        await expect(cartItems).toHaveCount(0);
+        await expect(cartPage.cartItems).toHaveCount(0, { timeout: 8000 });
     });
 
-    test('TC-010 Place order modal opens from cart', async ({ page }) => {
-        await page.locator('.card-title a').first().click();
-        await page.waitForTimeout(1000);
-        await page.locator('a:has-text("Add to cart")').click();
-        await page.waitForTimeout(1000);
+    test('TC-010 Place order modal opens from cart', async () => {
+        await homePage.addFirstProductToCart();
         await homePage.clickCart();
-        await page.waitForTimeout(2000);
-        await cartPage.placeOrder();
-        await expect(page.locator('#orderModal')).toBeVisible();
-    });
+        await expect(cartPage.cartItems.first()).toBeVisible();
 
+        await cartPage.placeOrder();
+        await expect(cartPage.orderModal).toBeVisible();
+    });
 });
