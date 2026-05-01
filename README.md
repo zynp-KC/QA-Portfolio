@@ -49,6 +49,7 @@ QA-Portfolio/
 | KiwiTCMS | [#4060 — Missing entries in Change History for Test Run](https://github.com/kiwitcms/Kiwi/issues/4060) | Reproduced issue on public test environment, documented missing audit trail entries |
 | Appwrite | [#11857 — queries[] shorthand syntax returns 400 Syntax Error](https://github.com/appwrite/appwrite/issues/11857) | Discovered and reported API query syntax inconsistency on Appwrite Cloud v1.9.0. |
 | WordPress iOS | [#25493 — About screen X link opens blank webview](https://github.com/wordpress-mobile/WordPress-iOS/issues/25493) | Discovered and reported deep link bug through exploratory testing on iPhone 13 |
+| johnpapa/shopathome | [PR #310 — Playwright E2E test suite](https://github.com/johnpapa/shopathome/pull/310) | Added POM, custom fixtures, accessibility (axe-core), mobile and CI/CD tests. 18/18 passing on Chromium |
 
 ---
 
