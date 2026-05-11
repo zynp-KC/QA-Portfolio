@@ -111,3 +111,14 @@ All Turkish-locale LinkedIn iOS users viewing Easy Apply job listings in portrai
 The button height constraint in the job detail bottom sheet CTA area should accommodate dynamic content. A fixed height value does not scale with locale-specific string lengths.
 
 Note: Exact implementation approach is at the discretion of the iOS development team.
+
+---
+
+## Disclosure
+
+| Field | Detail |
+|---|---|
+| **Reported To** | LinkedIn Support |
+| **Ticket ID** | #260510-013048 |
+| **Report Date** | 2026-05-10 |
+| **Status** | In Progress — Awaiting Engineering Review |
