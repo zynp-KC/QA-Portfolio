@@ -121,4 +121,6 @@ Note: Exact implementation approach is at the discretion of the iOS development 
 | **Reported To** | LinkedIn Support |
 | **Ticket ID** | #260510-013048 |
 | **Report Date** | 2026-05-10 |
-| **Status** | In Progress — Awaiting Engineering Review |
+| **Status** | ✅ Confirmed — Escalated to LinkedIn Engineering |
+| **Confirmed By** | LinkedIn Premium Support (Brad) |
+| **Confirmation Date** | 2026-05-13 |
