@@ -41,7 +41,7 @@ QA-Portfolio/
 
 ---
 
-## 🌍 Open Source Contributions
+## 🌍 Open Source Contributions & Real-World Testing
 
 | Project | Issue | Contribution |
 |---|---|---|
@@ -51,6 +51,7 @@ QA-Portfolio/
 | WordPress iOS | [#25493 — About screen X link opens blank webview](https://github.com/wordpress-mobile/WordPress-iOS/issues/25493) | Discovered and reported deep link bug through exploratory testing on iPhone 13 |
 | johnpapa/shopathome | [PR #310 — Playwright E2E test suite](https://github.com/johnpapa/shopathome/pull/310) | Added POM, custom fixtures, accessibility (axe-core), mobile and CI/CD tests. 18/18 passing on Chromium |
 | LinkedIn iOS | LI-MOB-001 — Easy Apply button label clipped in portrait mode (iOS 26.4.2) | Independently discovered UI regression, cross-platform verified (Android + landscape unaffected), root cause hypothesized, reported to LinkedIn |
+| BetaTesting.com | Paid Beta Test (May 2026) | Identified critical backend provisioning bug during multi-session eSIM test on Android | ✅ Completed |
 
 ---
 
