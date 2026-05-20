@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "strict": false,
+    "esModuleInterop": true,
+    "outDir": "./build",
+    "rootDir": "./",
+    "types": ["mocha", "@wdio/globals/types"]
+    },
+
+    "exclude": ["node_modules"]
+}
