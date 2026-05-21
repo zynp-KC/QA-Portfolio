@@ -7,6 +7,10 @@ export const config = {
     specs: ['./tests/**/*.spec.ts'],
     maxInstances: 1,
 
+    waitforTimeout: 10000,
+    connectionRetryTimeout: 30000,
+    connectionRetryCount: 3,
+
     capabilities: [{
         platformName: 'Android',
         'appium:deviceName': 'RF8R200202M',
