@@ -16,6 +16,10 @@ class SearchPage {
         return $('id=org.wikipedia.alpha:id/fragment_search_results');
     }
 
+    get noResultsText() {
+        return $('android=new UiSelector().text("Sonuç yok")');
+    }
+
     async skipOnboardingIfPresent() {
         if (await this.skipButton.isDisplayed()) {
             await this.skipButton.click();

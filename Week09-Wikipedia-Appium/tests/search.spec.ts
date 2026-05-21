@@ -11,21 +11,21 @@ describe('Wikipedia Search', () => {
             await skipBtn.waitForDisplayed({ timeout: 3000 });
             await skipBtn.click();
         } catch (e) {
-        
+            console.log('Onboarding skip button not found, continuing:', e);
         }
+
         await SearchPage.searchContainer.waitForDisplayed();
     });
 
-    it('should search for Appium and see results', async () => {
+    it('should return results when valid keyword is searched', async () => {
         await SearchPage.search('Appium');
         await SearchPage.waitForResults();
         await expect(SearchPage.searchResults).toBeDisplayed();
     });
 
-    it('should show no results for invalid search term', async () => {
+    it('should show empty state when invalid keyword is searched', async () => {
         await SearchPage.search('xyzxyzxyz123');
-        await SearchPage.waitForResults();
-        await expect(SearchPage.searchResults).toBeDisplayed();
+        await expect(SearchPage.noResultsText).toBeDisplayed();
     });
 
 });
