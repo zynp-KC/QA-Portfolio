@@ -1,4 +1,6 @@
-class SearchPage {
+import BasePage from './BasePage';
+
+class SearchPage extends BasePage {
 
     get skipButton() {
         return $('id=org.wikipedia.alpha:id/fragment_onboarding_skip_button');
@@ -20,21 +22,13 @@ class SearchPage {
         return $('android=new UiSelector().text("Sonuç yok")');
     }
 
-    async skipOnboardingIfPresent() {
-        if (await this.skipButton.isDisplayed()) {
-            await this.skipButton.click();
-        }
-    }
-
     async search(query: string) {
-        await this.searchContainer.waitForDisplayed();
-        await this.searchContainer.click();
-        await this.searchInput.click();
-        await this.searchInput.setValue(query);
+        await this.click(this.searchContainer);
+        await this.setValue(this.searchInput, query);
     }
 
     async waitForResults() {
-        await this.searchResults.waitForDisplayed({ timeout: 5000 });
+        await this.waitForElement(this.searchResults);
     }
 }
 
