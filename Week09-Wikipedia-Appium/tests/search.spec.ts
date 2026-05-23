@@ -28,4 +28,12 @@ describe('Wikipedia Search', () => {
         await expect(SearchPage.noResultsText).toBeDisplayed();
     });
 
+    it('should swipe up on search results', async () => {
+        await SearchPage.search('Appium');
+        await SearchPage.waitForResults();
+        await driver.hideKeyboard();
+        await SearchPage.swipeUp();
+        await expect(SearchPage.searchResults).toBeDisplayed();
+    });
+
 });
