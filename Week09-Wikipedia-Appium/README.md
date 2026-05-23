@@ -106,7 +106,7 @@ npx allure open
 
 | Field | Value |
 |---|---|
-| Device | Samsung Galaxy A36 5G |
+| Device | Samsung Galaxy A21s |
 | OS | Android 12 |
 | App | Wikipedia Alpha (org.wikipedia.alpha) |
 

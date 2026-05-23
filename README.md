@@ -113,10 +113,8 @@ QA-Portfolio/
 - Accessibility testing with axe-core (WCAG 2.1 AA — 10 violations)
 - Test metrics, defect analysis and release sign-off
 
----
-
 ### Week09 — Mobile Automation with Appium ✅
-- Real device E2E automation on Android (Samsung Galaxy A36)
+- Real device E2E automation on Android (Samsung Galaxy A21s)
 - Wikipedia Alpha app — search flow automation
 - Page Object Model: BasePage + SearchPage with inheritance
 - 3 test scenarios: valid search, invalid search (empty state), swipe
