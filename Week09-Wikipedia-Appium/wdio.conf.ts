@@ -35,5 +35,18 @@ export const config = {
         }
     },
 
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }]
+    ],
+
+    afterTest: async function (test, context, { error }) {
+        if (error) {
+            await browser.takeScreenshot();
+        }
+    },
 };
