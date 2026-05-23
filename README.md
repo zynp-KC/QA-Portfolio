@@ -10,15 +10,15 @@ API Testing, SQL Validation, E2E Automation and Mobile Testing.
 ## 📊 Portfolio Stats
 - 📋 Total Test Cases: 125+
 - 🐛 Total Bug Reports: 26+
-- 🤖 Automated Tests: 67 (across 3 browsers)
-- 📱 Apps Tested: X, TrendyolGo, WhatsApp, Spotify, FaceLab, ToonApp, OrangeHRM, Demoblaze, LinkedIn
+- 🤖 Automated Tests: 70 (across 3 browsers + Android)
+- 📱 Apps Tested: X, TrendyolGo, WhatsApp, Spotify, FaceLab, ToonApp, OrangeHRM, Demoblaze, LinkedIn, Wikipedia
 - 🔧 Platforms: Web · iOS · Android
 
 ---
 
 ## 🛠 Tools
 
-Git & GitHub · Excel · JIRA · Postman · SQL · Playwright · Firebase Test Lab · Chrome DevTools · axe-core
+Git & GitHub · Excel · JIRA · Postman · SQL · Playwright · Appium · WebdriverIO · Firebase Test Lab · Chrome DevTools · axe-core
 
 ---
 
@@ -36,6 +36,7 @@ QA-Portfolio/
 ├── Week06-Mobile-Testing/
 ├── Week07-OrangeHRM/
 ├── Week08-Demoblaze-QA/
+├── Week09-Wikipedia-Appium/
 └── open-source-contributions/
 ```
 
@@ -101,7 +102,7 @@ QA-Portfolio/
 - 21 Playwright automated tests across 3 browsers
 - Page Object Model architecture + CI/CD integration
 
-### Week08 — Demoblaze E-Commerce QA Capstone ✅
+### Week08 — Demoblaze E-Commerce QA Capstone 
 - Sprint planning with user stories, test strategy and risk matrix
 - BDD scenarios with Gherkin (4 feature files, 25+ scenarios)
 - Traceability matrix (User Story ⇨ BDD ⇨ Test Case)
@@ -111,6 +112,18 @@ QA-Portfolio/
 - 46 Playwright automated tests across 3 browsers
 - Accessibility testing with axe-core (WCAG 2.1 AA — 10 violations)
 - Test metrics, defect analysis and release sign-off
+
+---
+
+### Week09 — Mobile Automation with Appium ✅
+- Real device E2E automation on Android (Samsung Galaxy A36)
+- Wikipedia Alpha app — search flow automation
+- Page Object Model: BasePage + SearchPage with inheritance
+- 3 test scenarios: valid search, invalid search (empty state), swipe
+- `waitForDisplayed()` over `browser.pause()` — stable explicit waits
+- `beforeEach` app restart for full test isolation
+- Allure reporter with screenshot on failure
+- WebdriverIO + UiAutomator2 + TypeScript
 
 ---
 
