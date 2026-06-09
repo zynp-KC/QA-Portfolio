@@ -1,5 +1,5 @@
-// TODO: Replace 'any' with proper WebdriverIO element type
-// when @wdio/globals types are fully resolved for this version
+import type { ChainablePromiseElement } from 'webdriverio';
+
 export default class BasePage {
 
     async waitForElement(element: any, timeout = 10000) {

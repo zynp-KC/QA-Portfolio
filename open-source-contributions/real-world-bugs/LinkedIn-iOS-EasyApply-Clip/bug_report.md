@@ -121,6 +121,7 @@ Note: Exact implementation approach is at the discretion of the iOS development 
 | **Reported To** | LinkedIn Support |
 | **Ticket ID** | #260510-013048 |
 | **Report Date** | 2026-05-10 |
-| **Status** | ✅ Confirmed — Escalated to LinkedIn Engineering |
-| **Confirmed By** | LinkedIn Premium Support (Brad) |
-| **Confirmation Date** | 2026-05-13 |
+| **Fixed Date** | 2026-06-08 |
+| **Status** | ✅ Fixed & Closed — Resolved by LinkedIn Engineering |
+| **Verified By** | Zeynep KC (manual retest on iPhone 13, iOS 26.4.2) |
+| **Verification Date** | 2026-06-09 |
