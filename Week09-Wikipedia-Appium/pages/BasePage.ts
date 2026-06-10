@@ -2,16 +2,16 @@ import type { ChainablePromiseElement } from 'webdriverio';
 
 export default class BasePage {
 
-    async waitForElement(element: any, timeout = 10000) {
+    async waitForElement(element: ChainablePromiseElement, timeout = 10000) {
         await element.waitForDisplayed({ timeout });
     }
 
-    async click(element: any) {
+    async click(element: ChainablePromiseElement) {
         await this.waitForElement(element);
         await element.click();
     }
 
-    async setValue(element: any, value: string) {
+    async setValue(element: ChainablePromiseElement, value: string) {
         await this.waitForElement(element);
         await element.click();
         await element.waitForEnabled();
