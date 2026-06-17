@@ -1,34 +1,33 @@
 import BasePage from './BasePage';
+import { SearchBar } from '../components/SearchBar';
 
 class SearchPage extends BasePage {
+
+    searchBar = new SearchBar();
 
     get skipButton() {
         return $('id=org.wikipedia.alpha:id/fragment_onboarding_skip_button');
     }
-
+    
     get searchContainer() {
-        return $('id=org.wikipedia.alpha:id/search_container');
+        return this.searchBar.container;
     }
-
-    get searchInput() {
-        return $('id=org.wikipedia.alpha:id/search_src_text');
-    }
-
-    get searchResults() {
-        return $('id=org.wikipedia.alpha:id/fragment_search_results');
-    }
-
-    get noResultsText() {
-        return $('android=new UiSelector().text("Sonuç yok")');
-    }
-
+    
     async search(query: string) {
-        await this.click(this.searchContainer);
-        await this.setValue(this.searchInput, query);
+        await this.click(this.searchBar.container);
+        await this.setValue(this.searchBar.input, query);
     }
 
     async waitForResults() {
-        await this.waitForElement(this.searchResults);
+        await this.waitForElement(this.searchBar.results);
+    }
+
+    get searchResults() {
+        return this.searchBar.results;
+    }
+
+    get noResultsText() {
+        return this.searchBar.noResultsText;
     }
 }
 
