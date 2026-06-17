@@ -1,3 +1,4 @@
+import 'dotenv/config';
 export const config = {
     runner: 'local',
     hostname: '127.0.0.1',
@@ -16,7 +17,7 @@ export const config = {
         'appium:deviceName': 'RF8R200202M',
         'appium:platformVersion': '12',
         'appium:automationName': 'UiAutomator2',
-        'appium:app': 'C:\\Users\\ASUS\\Downloads\\app-alpha-universal-release.apk',
+        'appium:app': process.env.APP_PATH,
         'appium:appPackage': 'org.wikipedia.alpha',
         'appium:appActivity': 'org.wikipedia.main.MainActivity',
         'appium:noReset': true,
