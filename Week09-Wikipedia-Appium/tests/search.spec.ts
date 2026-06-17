@@ -38,8 +38,11 @@ describe('Wikipedia Search', () => {
         await SearchPage.search('Appium');
         await SearchPage.waitForResults();
         await driver.hideKeyboard();
-        await SearchPage.swipeUp();
+        await SearchPage.swipe('up');
         await expect(SearchPage.searchResults).toBeDisplayed();
+
+        const resultCount = await SearchPage.getResultCount();
+        await expect(resultCount).toBeGreaterThan(0);
     });
 
 });
