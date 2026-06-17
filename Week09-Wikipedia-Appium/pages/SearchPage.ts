@@ -22,6 +22,15 @@ class SearchPage extends BasePage {
         await this.waitForElement(this.searchBar.results);
     }
 
+    async getSearchInputText() {
+        return await this.searchBar.input.getText();
+    }
+
+    async getResultCount() {
+        const items = await this.searchBar.resultItems;
+        return items.length;
+    }
+
     get searchResults() {
         return this.searchBar.results;
     }

@@ -21,6 +21,12 @@ describe('Wikipedia Search', () => {
         await SearchPage.search('Appium');
         await SearchPage.waitForResults();
         await expect(SearchPage.searchResults).toBeDisplayed();
+
+        const inputText = await SearchPage.getSearchInputText();
+        await expect(inputText).toEqual('Appium');
+
+        const resultCount = await SearchPage.getResultCount();
+        await expect(resultCount).toBeGreaterThan(0);
     });
 
     it('should show empty state when invalid keyword is searched', async () => {

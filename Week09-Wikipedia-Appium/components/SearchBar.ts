@@ -15,4 +15,8 @@ export class SearchBar {
     get noResultsText() {
         return $('android=new UiSelector().text("Sonuç yok")');
     }
+
+    get resultItems() {
+        return $$('android.widget.TextView');
+    }
 }
