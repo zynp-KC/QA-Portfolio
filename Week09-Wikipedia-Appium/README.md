@@ -1,5 +1,7 @@
 # Week09 — Mobile Automation Testing: Wikipedia Android App
 
+[![Week09 TypeScript Type Check](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml)
+
 Appium + WebdriverIO + TypeScript ile Android cihazda gerçek uygulama üzerinde E2E test otomasyonu.
 
 ---
@@ -25,7 +27,9 @@ Week09-Wikipedia-Appium/
 │   └── search.spec.ts        # Test scenarios
 ├── pages/
 │   ├── BasePage.ts           # Common actions (click, setValue, swipe)
-│   └── SearchPage.ts         # Search screen elements & actions
+│   └── SearchPage.ts         # Search screen workflows
+├── components/
+│   └── SearchBar.ts          # Reusable search bar component
 ├── allure-results/           # Raw test results (gitignored)
 ├── allure-report/            # HTML report (gitignored)
 ├── wdio.conf.ts              # WebdriverIO + Appium configuration
@@ -37,15 +41,16 @@ Week09-Wikipedia-Appium/
 
 ## Architecture
 
-Page Object Model (POM) with inheritance:
+Page Object Model (POM) with inheritance and component composition:
 
 ```
 BasePage
-  └── SearchPage
+  └── SearchPage ── uses ──> SearchBar (component)
 ```
 
-`BasePage` provides reusable actions: `waitForElement`, `click`, `setValue`, `swipeUp`.
-`SearchPage` extends `BasePage` and defines screen-specific elements and workflows.
+`BasePage` provides reusable actions: `waitForElement`, `click`, `setValue`, `swipe`.
+`SearchPage` extends `BasePage` for workdlows and composes the `SearchBar` component for element locators.
+`SearchBar` isolates search-related locators into a reusable, maintainable unit.
 
 ---
 
@@ -114,8 +119,41 @@ npx allure open
 
 ## Key Implementation Notes
 
+## Key Implementation Notes
+
 - `beforeEach` hook restarts the app before each test to ensure test isolation
-- `waitForDisplayed()` used instead of `browser.pause()` for stable waits
+- `waitForDisplayed()` used instead of `browser.pause()` for stable explicit waits
 - Global `waitforTimeout: 10000` configured in `wdio.conf.ts`
-- `driver.hideKeyboard()` called before swipe to prevent character injection
+- **Type safety:** `ChainablePromiseElement` type used instead of `any` in `BasePage`
+- **Component architecture:** search locators extracted into a reusable `SearchBar` component
+- **Strong assertions:** tests validate input text and result count, not just element visibility
+- **Generic swipe utility:** `swipe(direction)` supports both up and down, calculated from screen size
+- **Config management:** APK path externalized via `.env` (dotenv), no hardcoded paths
+- **Flaky test resolved:** swipe gestures occasionally triggered the on-screen keyboard, injecting stray characters into the search field; fixed by calling `driver.hideKeyboard()` before swipe
 - Screenshot captured automatically on test failure via `afterTest` hook
+
+---
+
+## CI/CD
+
+A Github Actions workflows runs a TypeScript type-check (`tsc --noEmit`) on every push and pull request, catching type errors before they reach the main branch.
+
+> **Note:** Appium tests require a real device or emulator and are run locally. They are not executed in CI, since standard Github-hosted runners have no physical device.
+
+---
+
+## Known Limitations
+
+- Tests depend on Turkish locale strings (e.g. "Sonuç yok") — not localized for other languages
+- `appium:noReset: true` speeds up runs but can carry state between sessions; mitigated with `beforeEach` app restart
+- Onboarding screen handling relies on a `try/catch` block, since the screen appears inconsistently
+- Mobile gestures (swipe, keyboard) are timing-sensitive by nature
+
+---
+
+## Future Improvements
+
+- Cloud device farm integration (BrowserStack / AWS Device Farm) for CI execution
+- Parallel execution across multiple devices
+- Cross-device testing (different screen sizes and Android versions)
+- Locale-independent selectors to remove language dependency

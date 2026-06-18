@@ -118,9 +118,12 @@ QA-Portfolio/
 - Wikipedia Alpha app — search flow automation
 - Page Object Model: BasePage + SearchPage with inheritance
 - 3 test scenarios: valid search, invalid search (empty state), swipe
+- Strong assertions: input text and result count validation
 - `waitForDisplayed()` over `browser.pause()` — stable explicit waits
 - `beforeEach` app restart for full test isolation
+- `.env` config management (no hardcoded paths)
 - Allure reporter with screenshot on failure
+- CI: GitHub Actions TypeScript type-check on every push
 - WebdriverIO + UiAutomator2 + TypeScript
 
 ---
