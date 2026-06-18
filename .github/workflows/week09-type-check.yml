@@ -1,0 +1,30 @@
+name: Week09 TypeScript Type Check
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  type-check:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Week09-Wikipedia-Appium
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run TypeScript type check
+        run: npx tsc --noEmit
