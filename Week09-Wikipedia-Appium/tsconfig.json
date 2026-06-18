@@ -4,6 +4,7 @@
     "module": "commonjs",
     "strict": false,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "outDir": "./build",
     "rootDir": "./",
     "types": ["mocha", "@wdio/globals/types"]
