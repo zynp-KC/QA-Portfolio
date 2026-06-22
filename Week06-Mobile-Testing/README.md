@@ -13,6 +13,8 @@ This week focused on real-world mobile testing across multiple applications and 
 | Day04 | Android vs iOS Comparison | WhatsApp | iOS & Android |
 | Day05 | Exploratory Testing | Spotify | iOS |
 | Day06 | Test Summary Report | - | - |
+| Day07 | Exploratory Testing | FaceLab | iOS & Android |
+| Day08 | Exploratory Testing | ToonApp | iOS & Android |
 | Day09 | SBTM Exploratory (Charter + Timeboxed) | Getir | iOS |
 
 ## Tools Used
