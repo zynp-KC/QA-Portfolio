@@ -13,6 +13,7 @@ This week focused on real-world mobile testing across multiple applications and 
 | Day04 | Android vs iOS Comparison | WhatsApp | iOS & Android |
 | Day05 | Exploratory Testing | Spotify | iOS |
 | Day06 | Test Summary Report | - | - |
+| Day09 | SBTM Exploratory (Charter + Timeboxed) | Getir | iOS |
 
 ## Tools Used
 - Jira (bug reporting)
