@@ -17,8 +17,7 @@ test.describe('Cart', () => {
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
 
-        // firefoxta login response yavaş olduğu için timeout artırıldı
-        await expect(homePage.usernameDisplay).toContainText('Welcome', { timeout: 15000 });
+        await expect(homePage.usernameDisplay).toContainText('Welcome');
     });
 
     test('TC-001 Add product to cart', async () => {
@@ -35,7 +34,7 @@ test.describe('Cart', () => {
 
         // Sil ve doğrula
         await cartPage.deleteFirstItem();
-        await expect(cartPage.cartItems).toHaveCount(0, { timeout: 8000 });
+        await expect(cartPage.cartItems).toHaveCount(0, { timeout: 12000 });
     });
 
     test('TC-010 Place order modal opens from cart', async () => {

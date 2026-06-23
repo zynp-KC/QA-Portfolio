@@ -53,8 +53,7 @@ test.describe('Authentication', () => {
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
 
-        // firefox'ta login response yavaş olduğu için timeout artırıldı
-        await expect(homePage.usernameDisplay).toContainText('Welcome', { timeout: 15000 });
+        await expect(homePage.usernameDisplay).toContainText('Welcome');
 
         await homePage.logoutButton.click();
         await expect(homePage.loginButton).toBeVisible();

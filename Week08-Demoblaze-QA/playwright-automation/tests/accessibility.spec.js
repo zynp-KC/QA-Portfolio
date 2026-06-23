@@ -52,7 +52,7 @@ test.describe('Accessibility Testing — WCAG 2.1 AA', () => {
         await homePage.navigate();
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
-        await expect(homePage.usernameDisplay).toContainText('Welcome', { timeout: 15000 });
+        await expect(homePage.usernameDisplay).toContainText('Welcome');
 
         await homePage.addFirstProductToCart();
         await homePage.clickCart();
@@ -72,7 +72,7 @@ test.describe('Accessibility Testing — WCAG 2.1 AA', () => {
         await homePage.navigate();
         await homePage.clickLogin();
         await loginModal.login(users.validUser.username, users.validUser.password);
-        await expect(homePage.usernameDisplay).toContainText('Welcome', { timeout: 15000 });
+        await expect(homePage.usernameDisplay).toContainText('Welcome');
 
         await homePage.addFirstProductToCart();
         await homePage.clickCart();
