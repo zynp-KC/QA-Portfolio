@@ -1,0 +1,24 @@
+{
+  "name": "api-automation-restful-booker",
+  "version": "1.0.0",
+  "description": "Code-based API test automation framework for the Restful-Booker API, built with Playwright's request API and TypeScript.",
+  "scripts": {
+    "test": "playwright test --config=playwright.api.config.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "api-testing",
+    "playwright",
+    "typescript",
+    "qa-automation",
+    "rest-api"
+  ],
+  "author": "zynp-KC",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.0.1",
+    "typescript": "^6.0.3"
+  }
+}
