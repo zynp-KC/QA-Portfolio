@@ -98,5 +98,3 @@ The HTML report is generated in CI and uploaded as an artifact. Locally, results
 Tests run on GitHub Actions on every push and pull request to `main`. This project is one job in a shared matrix workflow (`.github/workflows/playwright.yml`) at the repository root, alongside other portfolio projects. Each job runs in its own isolated environment, so a failure in one does not affect the others.
 
 The badge at the top of this README reflects the live status of the entire workflow.
-
->!-- CI path-filter test -->
