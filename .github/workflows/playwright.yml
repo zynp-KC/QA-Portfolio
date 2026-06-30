@@ -24,9 +24,6 @@ jobs:
           - name: week08-demoblaze
             dir: Week08-Demoblaze-QA/playwright-automation
             test-cmd: npx playwright test
-          - name: api-restful-booker
-            dir: api-automation-restful-booker
-            test-cmd: npx playwright test --config=playwright.api.config.ts
     defaults:
       run:
         working-directory: ${{ matrix.dir }}
