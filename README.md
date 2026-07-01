@@ -1,5 +1,6 @@
 # QA Engineering Portfolio
 
+[![API Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml)
 [![Week09 Type Check](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml)
 
 A structured QA training portfolio with hands-on practice in Manual Testing, 
@@ -10,8 +11,9 @@ API Testing, SQL Validation, E2E Automation and Mobile Testing.
 ## 📊 Portfolio Stats
 - 📋 Total Test Cases: 125+
 - 🐛 Total Bug Reports: 26+
-- 🤖 Automated Tests: 70 (across 3 browsers + Android)
-- 📱 Apps Tested: X, TrendyolGo, WhatsApp, Spotify, FaceLab, ToonApp, OrangeHRM, Demoblaze, LinkedIn, Wikipedia
+- 🤖 Automated Tests: 77 (across 3 browsers + Android + API)
+- 📱 Apps Tested: X, TrendyolGo, WhatsApp, Spotify, FaceLab, ToonApp, OrangeHRM, Demoblaze, LinkedIn, Wikipedia, Getir
+- 🔌 APIs Tested: Restful-Booker (code-based automation) · OrangeHRM, Demoblaze (Postman)
 - 🔧 Platforms: Web · iOS · Android
 
 ---
@@ -37,6 +39,7 @@ QA-Portfolio/
 ├── Week07-OrangeHRM/
 ├── Week08-Demoblaze-QA/
 ├── Week09-Wikipedia-Appium/
+├── api-automation-restful-booker/
 └── open-source-contributions/
 ```
 
@@ -113,7 +116,7 @@ QA-Portfolio/
 - Accessibility testing with axe-core (WCAG 2.1 AA — 10 violations)
 - Test metrics, defect analysis and release sign-off
 
-### Week09 — Mobile Automation with Appium ✅
+### Week09 — Mobile Automation with Appium 
 - Real device E2E automation on Android (Samsung Galaxy A21s)
 - Wikipedia Alpha app — search flow automation
 - Page Object Model: BasePage + SearchPage with inheritance
@@ -125,6 +128,17 @@ QA-Portfolio/
 - Allure reporter with screenshot on failure
 - CI: GitHub Actions TypeScript type-check on every push
 - WebdriverIO + UiAutomator2 + TypeScript
+
+### Restful-Booker API Automation Framework ✅
+- Code-based API test automation framework built from scratch with Playwright's `request` API + TypeScript
+- Typed model layer (request/response interfaces, `strict` mode)
+- `ApiClient` wrapper with dependency injection — token handling + CRUD in one place (DRY)
+- Dynamic token authentication (fetched at runtime, no hardcoded credentials)
+- 7 automated tests: health check, positive/negative auth, full CRUD lifecycle, negative scenarios
+- 3 API defects documented via negative testing (`/ping` returns 201, invalid auth returns 200, missing fields return 500)
+- API-only execution — no browser binaries, fast and deterministic CI (~13s)
+- Path-filtered GitHub Actions workflow (runs only when the project changes)
+- [→ Full project README](./api-automation-restful-booker/README.md)
 
 ---
 
