@@ -15,7 +15,7 @@ This week focused on real-world mobile testing across multiple applications and 
 | Day06 | Test Summary Report | - | - |
 | Day07 | Exploratory Testing | FaceLab | iOS & Android |
 | Day08 | Exploratory Testing | ToonApp | iOS & Android |
-| Day09 | SBTM Exploratory (Charter + Timeboxed) | Getir | iOS |
+| Day09 | SBTM Exploratory (Charter + Timeboxed) | Getir | iOS & Android |
 
 ## Tools Used
 - Jira (bug reporting)

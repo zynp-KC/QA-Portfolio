@@ -66,20 +66,17 @@ The buttons stay permanently in the loading state. They do not recover until the
 navigates away from the screen and returns.
  
 ---
- 
+
 ## Cross-Platform Test Results
- 
+
 | Platform | OS Version | Orientation | Result |
 |---|---|---|---|
 | iOS (iPhone 13) | iOS 26.4.2 | Portrait | ❌ Reproduced |
-| iOS (iPhone 13) | iOS 26.4.2 | Landscape | ⏳ Not yet verified |
-| Android (Galaxy A21s) | Android 12 | Portrait | ⏳ Not yet verified |
- 
-> **Note:** Android verification is pending. If Android does **not** reproduce, this
-> strengthens the hypothesis of an iOS-side state-reset defect. Update this table after
-> retesting.
- 
----
+| Android (Galaxy A36) | Android 16 | Portrait | ✅ Not reproduced |
+
+> Verified on both platforms. The defect reproduces on iOS but **not** on Android —
+> confirming this is an **iOS-side state-reset issue**, not a backend or cross-platform
+> defect. The same steps on Android recover correctly (the button returns to its idle state).
  
 ## Reproducibility
  
@@ -146,6 +143,6 @@ renders a **loading spinner** after the Cancel action — the same failure as th
 `+` control, confirming a shared state-management pattern rather than a screen-specific
 defect.*
  
-> **Android (pending):** when retesting on the Galaxy A21s, capture a comparison shot.
-> If the control returns to its normal state after Cancel, that screenshot becomes the
-> cross-platform evidence pair confirming the defect is iOS-side.
+> **Android:** verified on Galaxy A21s (Android 12) — the control recovers correctly
+> after Cancel, so the defect is confirmed iOS-specific. No screenshot captured; the
+> absence of the bug is documented in the Cross-Platform Test Results table above.

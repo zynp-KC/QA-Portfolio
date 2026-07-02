@@ -8,8 +8,7 @@ contrasting with the comparison-style exploratory reports elsewhere in this week
 |---|---|
 | Application | Getir (getirmarket) |
 | Test Area | Shopping flow — Search, Basket, Checkout |
-| Platform | iOS 26.4.2 / iPhone 13 |
-| App Version | Getir v26.9.0 |
+| Platform | iOS 26.4.2 / iPhone 13 (bug verified iOS-only; Android 16 / Galaxy A36 unaffected) |
 | Session Length | 60 minutes (timeboxed) |
 | Date | 2026-05-13 |
 | Tester | Zeynep Kapacak |
