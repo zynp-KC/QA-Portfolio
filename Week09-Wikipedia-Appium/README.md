@@ -61,6 +61,7 @@ BasePage
 | 1 | Search with valid keyword ("Appium") | Results list displayed |
 | 2 | Search with invalid keyword ("xyzxyzxyz123") | "Sonuç yok" empty state displayed |
 | 3 | Swipe up on search results | Results still displayed after scroll |
+| 4 | Swipe down after swiping up | Results still displayed after scroll |
 
 ---
 
