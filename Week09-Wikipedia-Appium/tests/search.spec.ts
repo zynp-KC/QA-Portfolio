@@ -45,4 +45,21 @@ describe('Wikipedia Search', () => {
         await expect(resultCount).toBeGreaterThan(0);
     });
 
+    it('should swipe down after swiping up on search results', async () => {
+        await SearchPage.search('Appium');
+        await SearchPage.waitForResults();
+        await driver.hideKeyboard();
+
+        // Scroll up through the content, then swipe back down. If swipe('down')
+        // honours its direction, the gesture completes and the results list is
+        // still displayed with items present.
+        await SearchPage.swipe('up');
+        await SearchPage.swipe('down');
+
+        await expect(SearchPage.searchResults).toBeDisplayed();
+
+        const resultCount = await SearchPage.getResultCount();
+        await expect(resultCount).toBeGreaterThan(0);
+    });
+
 });

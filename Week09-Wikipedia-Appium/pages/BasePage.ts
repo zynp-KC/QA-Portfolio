@@ -20,17 +20,17 @@ export default class BasePage {
     }
 
     async swipe(direction: 'up' | 'down') {
-    const { width, height } = await driver.getWindowSize();
-    
-    const startY = direction === 'up' ? height * 0.7 : height * 0.3;
-    const endY = direction === 'up' ? height * 0.3 : height * 0.7;
-    
-    await driver.action('pointer')
-        .move({ x: width / 2, y: height * 0.7 })
-        .down()                                       
-        .move({ x: width / 2, y: height * 0.3 })   
-        .up()                                        
-        .perform();
+        const { width, height } = await driver.getWindowSize();
+
+        const startY = direction === 'up' ? height * 0.7 : height * 0.3;
+        const endY = direction === 'up' ? height * 0.3 : height * 0.7;
+
+        await driver.action('pointer')
+            .move({ x: width / 2, y: startY })
+            .down()
+            .move({ x: width / 2, y: endY })
+            .up()
+            .perform();
     }
 
 }

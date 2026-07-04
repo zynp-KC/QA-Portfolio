@@ -19,4 +19,5 @@ export class SearchBar {
     get resultItems() {
         return $$('android.widget.TextView');
     }
+
 }
