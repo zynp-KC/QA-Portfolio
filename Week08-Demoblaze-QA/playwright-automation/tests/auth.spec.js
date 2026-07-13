@@ -21,14 +21,22 @@ test.describe('Authentication', () => {
         await expect(homePage.usernameDisplay).toContainText('Welcome');
     });
 
-    test('TC-002 Login with invalid credentials shows error dialog', async ({ page }) => {
+    test('TC-002 Login with wrong password shows error dialog', async ({ page }) => {
         await homePage.clickLogin();
 
-        const dialogPromise = page.waitForEvent('dialog');
-        await loginModal.login(users.invalidUser.username, users.invalidUser.password);
-        const dialog = await dialogPromise;
-        await dialog.accept();
+        // Handler dialog'u ANINDA kapatır → alert JS thread'ini bloke etmez → click() döner.
+        // Promise ise mesajı test gövdesine taşır → assertion erken koşmaz.
+        const dialogMessage = new Promise((resolve) => {
+            page.once('dialog', async (dialog) => {
+                const message = dialog.message();
+                await dialog.accept();
+                resolve(message);
+            });
+        });
 
+        await loginModal.login(users.invalidUser.username, users.invalidUser.password);
+
+        expect(await dialogMessage).toContain('Wrong password');
         await expect(homePage.loginButton).toBeVisible();
     });
 
@@ -38,15 +46,20 @@ test.describe('Authentication', () => {
         const uniqueUsername = `testuser_${Date.now()}`;
 
         await homePage.clickSignup();
-        await expect(signupModal.usernameInput).toBeVisible();
 
-        // Dialog'u promise ile yakala — waitForTimeout yok
-        const dialogPromise = page.waitForEvent('dialog');
+        // Handler dialog'u anında accept eder → alert JS thread'ini bloke etmez → click() döner.
+        // Promise mesajı test gövdesine taşır → assertion dialog gelmeden koşmaz.
+        const dialogMessage = new Promise((resolve) => {
+            page.once('dialog', async (dialog) => {
+                const message = dialog.message();
+                await dialog.accept();
+                resolve(message);
+            });
+        });
+
         await signupModal.signup(uniqueUsername, users.newUser.password);
 
-        const dialog = await dialogPromise;
-        expect(dialog.message()).toContain('Sign up successful');
-        await dialog.accept();
+        expect(await dialogMessage).toContain('Sign up successful');
     });
 
     test('TC-008 Successful logout', async () => {

@@ -19,12 +19,12 @@ A comprehensive QA capstone project covering the full testing lifecycle for Demo
 
 | Module | Test Cases | Bugs Found |
 |---|---|---|
-| Authentication | 12 | 1 |
+| Authentication | 12 | 2 |
 | Product Catalog | 10 | 1 |
 | Cart | 10 | 3 |
 | Checkout | 8 | 2 |
 | Contact | - | 2 |
-| **Total** | **40** | **9** |
+| **Total** | **40** | **10** |
 
 ---
 
@@ -58,6 +58,7 @@ A comprehensive QA capstone project covering the full testing lifecycle for Demo
 | BUG-06 | Cart | Product not clickable from cart page | Low | P3 |
 | BUG-07 | Contact | Empty form submission accepted | Medium | P2 |
 | BUG-08 | Contact | Form data persists after closing modal | Low | P3 |
+| BUG-09 | Authentication | Login intermittently fails with no server response | High | P1 |
 
 ---
 
@@ -137,7 +138,7 @@ Week08-Demoblaze-QA/
 │   ├── TC_cart.md
 │   └── TC_checkout.md
 ├── bug-reports/
-│   ├── BUG-01.md → BUG-08.md
+│   ├── BUG-01.md → BUG-09.md
 │   └── bug_summary.md
 ├── api-testing/
 │   ├── Demoblaze_API_Tests.json
