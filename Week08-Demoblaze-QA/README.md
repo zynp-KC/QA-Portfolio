@@ -22,9 +22,9 @@ A comprehensive QA capstone project covering the full testing lifecycle for Demo
 | Authentication | 12 | 2 |
 | Product Catalog | 10 | 1 |
 | Cart | 10 | 3 |
-| Checkout | 8 | 2 |
+| Checkout | 8 | 4 |
 | Contact | - | 2 |
-| **Total** | **40** | **10** |
+| **Total** | **40** | **11** |
 
 ---
 
@@ -36,7 +36,7 @@ A comprehensive QA capstone project covering the full testing lifecycle for Demo
 | BDD Scenarios (4 feature files) | ✅ |
 | Traceability Matrix | ✅ |
 | Manual Test Cases (40) | ✅ |
-| Bug Reports (8) | ✅ |
+| Bug Reports (11) | ✅ |
 | API Test Collection (12 endpoints) | ✅ |
 | Playwright Automation (46 tests) | ✅ |
 | Accessibility Report (WCAG 2.1 AA) | ✅ |
@@ -59,6 +59,8 @@ A comprehensive QA capstone project covering the full testing lifecycle for Demo
 | BUG-07 | Contact | Empty form submission accepted | Medium | P2 |
 | BUG-08 | Contact | Form data persists after closing modal | Low | P3 |
 | BUG-09 | Authentication | Login intermittently fails with no server response | High | P1 |
+| BUG-10 | Checkout | Order confirmation displayed before the server responds | High | P1 |
+| BUG-11 | Checkout | Checkout does not submit order data — only clears the cart | Critical | P1 |
 
 ---
 
@@ -76,7 +78,7 @@ A comprehensive QA capstone project covering the full testing lifecycle for Demo
 | /addtocart | POST | ✅ Pass |
 | /viewcart | POST | ✅ Pass |
 | /deleteitem | POST | ✅ Pass |
-| /deletecart | POST | ✅ Pass |
+| /deletecart | POST | ⚠️ Bug — used as checkout endpoint; no order is created (BUG-11) |
 | /viewcart (invalid token) | POST | ⚠️ Bug — 401 expected |
 
 ---
@@ -138,7 +140,7 @@ Week08-Demoblaze-QA/
 │   ├── TC_cart.md
 │   └── TC_checkout.md
 ├── bug-reports/
-│   ├── BUG-01.md → BUG-09.md
+│   ├── BUG-01.md → BUG-11.md
 │   └── bug_summary.md
 ├── api-testing/
 │   ├── Demoblaze_API_Tests.json

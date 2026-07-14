@@ -38,11 +38,16 @@ test.describe('Checkout', () => {
         await checkoutModal.fillForm(name, country, city, card, month, year);
         await checkoutModal.purchase();
 
+        // NOTE: This asserts only that the confirmation UI appears. Per BUG-11, Demoblaze
+        // never submits an order — the only request sent is POST /deletecart, and none of
+        // the form data is transmitted. There is no server-side order to verify, so this is
+        // the strongest assertion the application makes possible.
+        // Per BUG-10, the confirmation also renders before the server responds
         await expect(checkoutModal.confirmationMessage).toBeVisible();
         await expect(checkoutModal.confirmationMessage).toContainText('Thank you');
     });
 
-    test.fail('TC-003 BUG-03 Credit card field accepts letters', async () => {
+    test('TC-003 BUG-03 Credit card field accepts letters — flow completes with no validation', async () => {
         await cartPage.placeOrder();
         await expect(checkoutModal.orderModal).toBeVisible();
 
@@ -50,6 +55,12 @@ test.describe('Checkout', () => {
         await checkoutModal.fillForm(name, country, city, card, month, year);
         await checkoutModal.purchase();
 
-        await expect(checkoutModal.confirmationMessage).not.toBeVisible();
+        // BUG-03: letters are accepted in the credit card field and the flow completes.
+        // Root cause is BUG-11 — the card number is never transmitted to any server,
+        // so server-side validation cannot exist. This assertion documents the current
+        // behaviour; if Demoblaze ever adds validation, this test will fail and force
+        // an update, which is the intent.
+        await expect(checkoutModal.confirmationMessage).toBeVisible();
+        await expect(checkoutModal.confirmationMessage).toContainText('Thank you');
     });
 });

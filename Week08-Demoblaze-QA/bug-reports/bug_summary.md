@@ -1,6 +1,7 @@
 # Bug Report Summary — Demoblaze E-Commerce
 
 - **Date:** 2026-04-23
+- **Last Updated:** 2026-07-14
 - **Tester:** Zeynep KC
 - **Environment:** https://www.demoblaze.com
 
@@ -19,6 +20,8 @@
 | BUG-07 | Contact | Empty contact form submission accepted — no validation | Medium | P2 | Open |
 | BUG-08 | Contact | Form data persists after closing modal | Low | P3 | Open |
 | BUG-09 | Authentication | Login intermittently fails — no server response, no user feedback (~13%) | High | P1 | Open |
+| BUG-10 | Checkout | Order confirmation displayed before the server responds | High | P1 | Open |
+| BUG-11 | Checkout | Checkout does not submit order data — only clears the cart | Critical | P1 | Open |
 
 ---
 
@@ -26,16 +29,17 @@
 
 | Severity | Count |
 |---|---|
-| High | 4 |
+| Critical | 1 |
+| High | 5 |
 | Medium | 3 |
 | Low | 2 |
-| **Total** | **9** |
+| **Total** | **11** |
 
 ---
 
 ## Evidence
 
-| Bug ID | Screenshot |
+| Bug ID | Evidence |
 |---|---|
 | BUG-01 | screenshots/bug-01-previous-button.png |
 | BUG-02 | Not available |
@@ -45,4 +49,6 @@
 | BUG-06 | Not available |
 | BUG-07 | screenshots/bug-07-empty-contact-form.png |
 | BUG-08 | Not available |
-| BUG-09 | Not available — network response logs (13/15 runs returned a token, 2 returned no response) |
+| BUG-09 | Network response logs (13/15 runs returned a token, 2 returned no response) |
+| BUG-10 | Network capture — confirmation renders before `/deletecart` response arrives |
+| BUG-11 | Full network capture — no order-creation endpoint is ever called |

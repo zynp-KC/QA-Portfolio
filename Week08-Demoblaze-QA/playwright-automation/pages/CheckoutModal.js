@@ -8,11 +8,13 @@ class CheckoutModal {
         this.creditCardInput = page.locator('#card');
         this.monthInput = page.locator('#month');
         this.yearInput = page.locator('#year');
-        this.purchaseButton = page.locator('button:has-text("Purchase")');
+        this.purchaseButton = page.locator('#orderModal button:has-text("Purchase")');
         this.confirmationMessage = page.locator('.sweet-alert h2');
     }
 
     async fillForm(name, country,city,card,month,year) {
+        await this.orderModal.waitFor({ state: 'visible' });
+        await this.nameInput.waitFor({ state: 'visible' });
         await this.nameInput.fill(name);
         await this.countryInput.fill(country);
         await this.cityInput.fill(city);

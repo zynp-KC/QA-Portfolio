@@ -23,3 +23,4 @@
 - **Expected Result:** Invalid credit card warning should be displayed
 - **Actual Result:** Order is completed successfully despite invalid credit card input. No warning message is displayed.
 - **Screenshot:** Not available
+- **Root cause:** See BUG-11 — the credit card number is never transmitted to any server, so server-side validation is impossible.
