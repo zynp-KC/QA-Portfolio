@@ -45,6 +45,14 @@ QA-Portfolio/
 
 ---
 
+## 🔬 Engineering Notes
+
+Besides the project implementations, I document real debugging investigations of flaky tests and the reasoning used to identify their root causes.
+
+➡️ [Flaky Test Investigations](FLAKY_TEST_INVESTIGATIONS.md)
+
+---
+
 ## 🌍 Open Source Contributions & Real-World Testing
 
 | Project | Issue | Contribution |
