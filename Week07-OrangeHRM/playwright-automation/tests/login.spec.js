@@ -17,8 +17,13 @@ test.describe('Login — Happy Path', () => {
         await page.waitForURL(/dashboard/, { timeout: 15000 });
         await page.waitForSelector('.oxd-userdropdown-tab', { timeout: 10000 });
         await page.locator('.oxd-userdropdown-tab').click();
-        await page.waitForSelector('a[href="/web/index.php/auth/logout"]', { timeout: 5000 });
-        await page.locator('a[href="/web/index.php/auth/logout"]').click();
-        await expect(page).toHaveURL(/login/);
+
+        const logoutLink = page.getByRole('menuitem', { name: 'Logout' });
+        await logoutLink.waitFor({ state: 'visible' });
+
+        await Promise.all([
+            page.waitForURL(/login/, { timeout: 20000 }),
+            logoutLink.click(),
+        ]);
     });
 });
