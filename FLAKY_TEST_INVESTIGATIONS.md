@@ -6,6 +6,8 @@ Rather than documenting only the final fix, each case explains the debugging pro
 
 The goal is to demonstrate debugging and root-cause analysis rather than simply making tests pass.
 
+The three investigations cover different layers of automated testing: UI synchronization, application behavior, and CI pipeline reliability.
+
 ---
 
 ## Case 1 - A `force: true` that was hiding a real race condition
@@ -93,3 +95,43 @@ This is an application defect, not a test defect, and Demoblaze is a third-party
 
 ### Lesson
 An intermittent failure is sometimes the visible edge of a defect that is always present. The retry-and-move-on reflex would have kept the suite green and left a broken checkout undetected. Reading the network instead of raising the timeout turned a "flaky test" into a critical, evidence-backed finding: a purchase flow that confirms success without ever placing an order.
+
+---
+
+## Case 3 - A CI job that hung for 20 minutes with no diagnosis
+
+- **Project:** Week07, OrangeHRM (Playwright, JavaScript)
+- **Area:** CI pipeline (GitHub Actions)
+
+### Symptom
+After a routine push, the Week07 CI job ran for 19 minutes and was then killed by the runner's 20-minute limit. The log showed `Running 21 tests` followed by silence, then `The operation was canceled`. No test result was ever printed, so there was nothing to diagnose. The two previous runs had passed in 2-3 minutes.
+
+### Ruling myself out first
+My push had only touched the Week08 folder, but the failing job was Week07. Before blaming anything external, I verified this with evidence rather than assumption:
+
+- `git show --stat HEAD` confirmed all changed files were under Week08. No Week07 file was touched.
+- The workflow used `working-directory` per matrix job, so one project's config cannot leak into another's.
+
+That eliminated my own change as the cause. It also eliminated the site being down: the demo loaded fine in a browser, and running the suite locally passed 21/21 in under two minutes.
+
+### Root cause
+The config had no navigation or action timeouts, and set `retries: 2` on CI. When the demo became slow or briefly unreachable from the CI runner, `page.goto()` waited on Playwright's default navigation behavior, and every retry multiplied that wait. With 63 test executions running serially, three attempts each, the job could never finish inside its budget. It did not fail; it starved. That is why the log showed a bare `canceled` with no test output: no single test ever completed.
+
+### Fix
+Make an unreachable host fail fast instead of hanging, and stop retries from multiplying the wait:
+
+```javascript
+retries: process.env.CI ? 1 : 0,
+timeout: 45000,
+use: {
+    actionTimeout: 10000,
+    navigationTimeout: 20000,
+},
+```
+
+With an explicit `navigationTimeout`, a dead host now produces a clear `Timeout 20000ms exceeded: navigating to ...` error that names the failing step, instead of an uninformative `canceled`. Reducing CI retries from 2 to 1 stops the pipeline from tripling the wait against a host that is not going to answer.
+
+The same gap existed in two other projects (Week05 and Week08), which had also been set up from Playwright's default template. Week05 was in fact the original source of a long-standing, unexplained CI hang. The fix was applied consistently across all three.
+
+### Lesson
+A hang is worse than a failure, because a failure tells you where it broke and a hang tells you nothing. The goal was not just to make CI green again, but to guarantee that the next time a public demo goes down, the pipeline reports a precise, named timeout in seconds instead of disappearing for twenty minutes. Fail fast, fail legibly.
