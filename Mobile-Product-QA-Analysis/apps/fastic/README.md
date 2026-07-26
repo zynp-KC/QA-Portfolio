@@ -1,4 +1,4 @@
-# Fastic — Product & QA Analysis
+# Fastic: Product & QA Analysis
 
 A hands-on analysis of the Fastic intermittent-fasting app, evaluated on a real
 device (iPhone 13, iOS) by going through the full first-time user experience.
@@ -9,10 +9,9 @@ delivering real value to the user and the business.
 
 ## Contents
 
-- **[Product-Analysis.md](Product-Analysis.md)** — Full product and UX analysis:
-  FTUE funnel, UI evaluation, ethical review, prioritized recommendations, and
+- **[Product-Analysis.md](Product-Analysis.md)**: the full product and UX analysis, covering the FTUE funnel, UI evaluation, ethical review, prioritized recommendations, and
   product edge cases, with annotated screenshots.
-- **screenshots/** — Evidence captured during the onboarding walkthrough.
+- **screenshots/**: evidence captured during the onboarding walkthrough.
 
 ## Core finding
 
