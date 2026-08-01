@@ -23,8 +23,8 @@ API Testing, SQL Validation, E2E Automation and Mobile Testing.
 ---
 
 ## 📊 Portfolio Stats
-- 📋 Total Test Cases: 125+
-- 🐛 Total Bug Reports: 26+
+- 📋 Total Test Cases: 138+
+- 🐛 Total Bug Reports: 28+
 - 🤖 Automated Tests: 77 (across 3 browsers + Android + API)
 - 📱 Apps Tested: X, TrendyolGo, WhatsApp, Spotify, FaceLab, ToonApp, OrangeHRM, Demoblaze, LinkedIn, Wikipedia, Getir
 - 🔌 APIs Tested: Restful-Booker (code-based automation) · OrangeHRM, Demoblaze (Postman)
