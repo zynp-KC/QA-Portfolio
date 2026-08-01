@@ -1,10 +1,24 @@
 # QA Engineering Portfolio
 
 [![API Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml)
+
+[![Playwright Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml)
+
 [![Week09 Type Check](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml)
 
 A structured QA training portfolio with hands-on practice in Manual Testing, 
 API Testing, SQL Validation, E2E Automation and Mobile Testing.
+
+---
+
+## ⭐ Featured Projects
+
+| Project | What it shows |
+|---|---|
+| **[API Test Framework](./api-automation-restful-booker)** | TypeScript API automation (Playwright) with a typed client/model layer, full CRUD lifecycle, and negative tests that document a real API bug (500 instead of 400). |
+| **[Demoblaze E2E & Accessibility](./Week08-Demoblaze-QA/playwright-automation)** | End-to-end suite across Chromium, Firefox and WebKit, plus WCAG 2.1 AA accessibility auditing with axe-core. |
+| **[Wikipedia Mobile Automation](./Week09-Wikipedia-Appium)** | Real-device Android automation with WebdriverIO + Appium, using the Page Object Model. |
+| **[Flaky Test Investigations](./FLAKY_TEST_INVESTIGATIONS.md)** | Root-cause analysis write-ups: symptom → hypotheses → evidence → fix. Debugging process, not just passing tests. |
 
 ---
 
