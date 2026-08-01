@@ -3,8 +3,8 @@ import HomePage from '../pages/HomePage.js';
 import LoginModal from '../pages/LoginModal.js';
 import CartPage from '../pages/CartPage.js';
 import CheckoutModal from '../pages/CheckoutModal.js';
-import users from '../fixtures/users.json' assert { type: 'json' };
-import checkoutData from '../fixtures/checkout.json' assert { type: 'json' };
+import users from '../fixtures/users.json' with { type: 'json' } ;
+import checkoutData from '../fixtures/checkout.json' with { type: 'json' } ;
 
 test.describe('Checkout', () => {
     let homePage;

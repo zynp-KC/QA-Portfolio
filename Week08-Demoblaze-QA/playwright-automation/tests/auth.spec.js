@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import HomePage from '../pages/HomePage.js';
 import LoginModal from '../pages/LoginModal.js';
 import SignupModal from '../pages/SignupModal.js';
-import users from '../fixtures/users.json' assert { type: 'json' };
+import users from '../fixtures/users.json' with { type: 'json' } ;
 
 test.describe('Authentication', () => {
     let homePage;
