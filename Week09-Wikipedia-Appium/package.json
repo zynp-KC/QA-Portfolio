@@ -1,14 +1,16 @@
 {
   "name": "wikipedia-appium",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Real-device Android mobile automation for the Wikipedia app using WebdriverIO and Appium.",
+  "private": true,
+  "author": "zynp-KC",
+  "license": "MIT",
+  "keywords": ["qa-automation", "appium", "webdriverio", "mobile-testing", "android"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wdio run ./wdio.conf.ts",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open allure-results"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/webdriverio": "^4.13.3",

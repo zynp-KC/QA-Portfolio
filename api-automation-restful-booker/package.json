@@ -14,7 +14,7 @@
     "rest-api"
   ],
   "author": "zynp-KC",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.61.1",
