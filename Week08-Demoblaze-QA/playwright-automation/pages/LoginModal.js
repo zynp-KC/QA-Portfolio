@@ -10,11 +10,11 @@ class LoginModal {
 
     async login(username, password) {
         await this.modal.waitFor({ state: 'visible' });
-        await this.usernameInput.waitFor({ state: 'visible' });
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
-        
         await this.loginButton.click();
+
+        await this.modal.waitFor({ state: 'hidden' });
     }
 }
 
