@@ -1,10 +1,6 @@
 # QA Engineering Portfolio
 
-[![API Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml)
-
-[![Playwright Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml)
-
-[![Week09 Type Check](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml)
+[![API Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/api-tests.yml) [![Playwright Tests](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/playwright.yml) [![Week09 Type Check](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml/badge.svg)](https://github.com/zynp-KC/QA-Portfolio/actions/workflows/week09-type-check.yml)
 
 A structured QA training portfolio with hands-on practice in Manual Testing, 
 API Testing, SQL Validation, E2E Automation and Mobile Testing.
