@@ -13,8 +13,11 @@ class LoginModal {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
+    }
 
-        await this.modal.waitFor({ state: 'hidden' });
+    async loginExpectingSuccess(username, password) {
+        await this.login(username, password);
+        await this.modal.waitFor({ state: 'hidden', timeout: 15000 });
     }
 }
 
