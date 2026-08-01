@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ApiClient } from '../src/client/api-client';
-import { AuthCredentials } from '../src/models/booking';
+import { AuthCredentials, AuthResponse } from '../src/models/booking';
 
 test.describe('Authentication - /auth', () => {
     test('should return a token when valid credentials are provided', async ({ request }) => {
@@ -11,18 +11,20 @@ test.describe('Authentication - /auth', () => {
             password: 'password123',
         };
 
-        const token = await client.createToken(credentials);
+        const response = await client.createToken(credentials);
+        expect(response.status()).toBe(200);
 
-        expect(token).toBeTruthy();
-        expect(typeof token).toBe('string');
+        const body: AuthResponse = await response.json();
+        expect(body.token).toBeTruthy();
+        expect(typeof body.token).toBe('string');
     });
 
     test('should NOT return a token when invalid credentials are provided', async ({ request }) => {
-        const response  = await request.post('/auth', {
-            data: {
-                username: 'admin',
-                password: 'wrongpassword',
-            },
+        const client = new ApiClient(request);
+
+        const response = await client.createToken({
+            username: 'admin',
+            password: 'wrongpassword',
         });
 
         // BUG: Restful Booker returns 200 OK for invalid credentials instead of the
@@ -32,6 +34,5 @@ test.describe('Authentication - /auth', () => {
         const body = await response.json();
         expect(body).not.toHaveProperty('token');
         expect(body).toHaveProperty('reason', 'Bad credentials');
-    
     });
 });

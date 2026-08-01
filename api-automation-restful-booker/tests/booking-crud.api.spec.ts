@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { ApiClient } from '../src/client/api-client';
-import { Booking, AuthCredentials } from '../src/models/booking';
+import { Booking, BookingResponse, AuthResponse, AuthCredentials } from '../src/models/booking';
 
 test.describe('Booking CRUD lifecycle', () => {
     test('should create, retrieve, update and delete a booking', async ({ request }) => {
@@ -21,8 +21,10 @@ test.describe('Booking CRUD lifecycle', () => {
         let bookingId: number;
 
         await test.step('create a new booking', async () => {
-            const created = await client.createBooking(newBooking);
+            const response = await client.createBooking(newBooking);
+            expect(response.status()).toBe(200);
 
+            const created: BookingResponse = await response.json();
             expect(created.bookingid).toBeTruthy();
             expect(created.booking.firstname).toBe(newBooking.firstname);
 
@@ -30,8 +32,10 @@ test.describe('Booking CRUD lifecycle', () => {
         });
 
         await test.step('retrieve the created booking', async () => {
-            const fetched = await client.getBooking(bookingId);
+            const response = await client.getBooking(bookingId);
+            expect(response.status()).toBe(200);
 
+            const fetched: Booking = await response.json();
             expect(fetched.firstname).toBe(newBooking.firstname);
             expect(fetched.totalprice).toBe(newBooking.totalprice);
         });
@@ -40,7 +44,9 @@ test.describe('Booking CRUD lifecycle', () => {
             username: 'admin',
             password: 'password123'
         };
-        const token = await client.createToken(credentials);
+        const authResponse = await client.createToken(credentials);
+        expect(authResponse.status()).toBe(200);
+        const { token }: AuthResponse = await authResponse.json();
 
         await test.step('update the booking', async () => {
             const updatedBooking: Booking = {
@@ -49,17 +55,20 @@ test.describe('Booking CRUD lifecycle', () => {
                 additionalneeds: 'Breakfast and Dinner',
             };
 
-            const updated = await client.updateBooking(bookingId, updatedBooking, token);
+            const response = await client.updateBooking(bookingId, updatedBooking, token);
+            expect(response.status()).toBe(200);
 
+            const updated: Booking = await response.json();
             expect(updated.totalprice).toBe(500);
             expect(updated.additionalneeds).toBe('Breakfast and Dinner');
         });
 
         await test.step('delete the booking', async () => {
-            await client.deleteBooking(bookingId, token);
+            const response = await client.deleteBooking(bookingId, token);
+            expect(response.status()).toBe(201);
 
-            const response = await request.get(`/booking/${bookingId}`);
-            expect(response.status()).toBe(404);
+            const getResponse = await client.getBooking(bookingId);
+            expect(getResponse.status()).toBe(404);
         });
     });
 });
