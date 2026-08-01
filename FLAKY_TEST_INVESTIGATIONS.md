@@ -6,7 +6,7 @@ Rather than documenting only the final fix, each case explains the debugging pro
 
 The goal is to demonstrate debugging and root-cause analysis rather than simply making tests pass.
 
-The three investigations cover different layers of automated testing: UI synchronization, application behavior, and CI pipeline reliability.
+The four investigations cover different layers of automated testing: UI synchronization, application behavior, CI pipeline reliability, and deterministic waiting strategy.
 
 ---
 
@@ -135,3 +135,48 @@ The same gap existed in two other projects (Week05 and Week08), which had also b
 
 ### Lesson
 A hang is worse than a failure, because a failure tells you where it broke and a hang tells you nothing. The goal was not just to make CI green again, but to guarantee that the next time a public demo goes down, the pipeline reports a precise, named timeout in seconds instead of disappearing for twenty minutes. Fail fast, fail legibly.
+
+---
+
+## Case 4 - A Firefox-only login flake that was never actually about the test
+
+- **Project:** Week08, Demoblaze (Playwright, JavaScript)
+- **Area:** Authentication precondition in the Cart suite (`beforeEach` login)
+
+### Symptom
+`TC-003 Remove product from cart` failed only on Firefox, roughly one run in five, while Chromium and WebKit always passed. The stack trace pointed not at the removal logic but at line 20 in `beforeEach` — the login precondition — where `expect(#nameofuser).toContainText('Welcome')` timed out. The trace note was the key clue: the element was present but held the value `""` for the entire timeout (`28 × locator resolved to <a id="nameofuser"> - unexpected value ''`).
+
+### What I tried first (and why it was wrong)
+Because the failure surfaced under `TC-003`, the instinct was to inspect the delete logic. But the trace located it at the shared login step, and an element that stays empty for the full timeout is not slow — it was never populated. Raising the timeout was already ruled out before I started: the `expect` timeout was set to 25s and the element stayed empty the whole 25s. More waiting was not the answer.
+
+### Eliminating hypotheses
+- **Is it specific to TC-003?** The failing line was the login precondition shared by every cart test, and other tests using the same login sometimes passed. Rejected.
+- **Is `#nameofuser` just slow to render?** With a 25s timeout and a value that never changed from `""`, this was not a render delay. The login itself never completed. Rejected.
+- **Is it a real application bug?** A genuine defect would fail deterministically across engines. This failed only on Firefox, and only intermittently — the signature of timing, not behavior. Rejected.
+
+### Root cause
+The `login()` page object filled the fields, clicked "Log in", and returned immediately — nothing tied the method's return to login actually completing. The Bootstrap login modal fades in, and on Firefox — whose animation timing differs from Chromium and WebKit — the click occasionally landed before the modal had settled and was swallowed, so the `/login` request never went out. With no request, `#nameofuser` was never populated, and the assertion timed out against an element that would stay empty forever. The intermittency came entirely from animation timing, which is exactly what made it flaky.
+
+### Fix
+Make `login()` atomic: it should return only once login has demonstrably completed. The cleanest deterministic signal is one the user can observe — Demoblaze closes the login modal only on a successful login, so waiting for the modal to disappear ties the method to real completion.
+
+```javascript
+async login(username, password) {
+    await this.modal.waitFor({ state: 'visible' });
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
+    await this.loginButton.click();
+
+    // Demoblaze closes the modal only after a successful login.
+    // Waiting for it makes login() return only once login truly completed.
+    await this.modal.waitFor({ state: 'hidden' });
+}
+```
+
+Verified by running the cart suite five times on Firefox (`--repeat-each=5`): 15/15 passed. A single green run would not have been evidence; the repetition is what demonstrates the flake is gone.
+
+### A design choice worth naming
+An alternative was to wait on the login network response directly (`page.waitForResponse(res => res.url().includes('/login'))`). That is more surgical — if the click is swallowed and no request is sent, it fails at exactly that point. But it couples the test to the application's internal wiring: if the endpoint path ever changed while the feature still worked, the test would break. Waiting for the modal to close is a black-box signal — it asserts what the user observes, not how the app is built — so it survives internal refactors. I chose the UI signal for resilience; the network wait remains the better tool when a swallowed click needs to be pinpointed rather than merely prevented.
+
+### Lesson
+A blind wait (`waitForTimeout`) and a deterministic wait look alike in code but are opposites in intent: one hopes the work is done, the other knows it is. The reflex to "just raise the timeout" was already disproven here — it was 25s and the element stayed empty throughout. The fix was not to wait longer but to wait for the *right thing*, and to prefer a signal the user can see over one tied to the application's internals.
