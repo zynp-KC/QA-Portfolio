@@ -6,7 +6,7 @@ Rather than documenting only the final fix, each case explains the debugging pro
 
 The goal is to demonstrate debugging and root-cause analysis rather than simply making tests pass.
 
-The four investigations cover different layers of automated testing: UI synchronization, application behavior, CI pipeline reliability, and deterministic waiting strategy.
+The four investigations cover different layers of automated testing: UI synchronization, application behavior, CI pipeline reliability, and separating an action from its expected outcome
 
 ---
 
@@ -138,45 +138,47 @@ A hang is worse than a failure, because a failure tells you where it broke and a
 
 ---
 
-## Case 4 - A Firefox-only login flake that was never actually about the test
+## Case 4 - A login flake I "fixed" locally that CI proved I hadn't
 
 - **Project:** Week08, Demoblaze (Playwright, JavaScript)
-- **Area:** Authentication precondition in the Cart suite (`beforeEach` login)
+- **Area:** Authentication, shared across the auth, cart, and checkout suites
 
 ### Symptom
-`TC-003 Remove product from cart` failed only on Firefox, roughly one run in five, while Chromium and WebKit always passed. The stack trace pointed not at the removal logic but at line 20 in `beforeEach` — the login precondition — where `expect(#nameofuser).toContainText('Welcome')` timed out. The trace note was the key clue: the element was present but held the value `""` for the entire timeout (`28 × locator resolved to <a id="nameofuser"> - unexpected value ''`).
+`TC-003 Remove product from cart` failed only on Firefox, roughly one run in five, while Chromium and WebKit passed. The trace pointed not at the removal logic but at the login precondition in `beforeEach`, where `expect(#nameofuser).toContainText('Welcome')` timed out against an element that stayed empty (`""`) for the entire timeout. The login was never completing; the removal test was just the first place that noticed.
 
-### What I tried first (and why it was wrong)
-Because the failure surfaced under `TC-003`, the instinct was to inspect the delete logic. But the trace located it at the shared login step, and an element that stays empty for the full timeout is not slow — it was never populated. Raising the timeout was already ruled out before I started: the `expect` timeout was set to 25s and the element stayed empty the whole 25s. More waiting was not the answer.
+### First fix, and why local success was misleading
+The `login()` page object filled the fields, clicked "Log in", and returned immediately — nothing tied the method's return to login actually completing, so the assertion raced an in-flight login. I made `login()` wait for the modal to close (Demoblaze closes it only on success) and reran the cart suite five times on Firefox: 15/15 passed. I treated that as proof.
 
-### Eliminating hypotheses
-- **Is it specific to TC-003?** The failing line was the login precondition shared by every cart test, and other tests using the same login sometimes passed. Rejected.
-- **Is `#nameofuser` just slow to render?** With a 25s timeout and a value that never changed from `""`, this was not a render delay. The login itself never completed. Rejected.
-- **Is it a real application bug?** A genuine defect would fail deterministically across engines. This failed only on Firefox, and only intermittently — the signature of timing, not behavior. Rejected.
+It wasn't. Five green runs on one browser, on the happy path, said nothing about the other paths that shared the same method.
 
-### Root cause
-The `login()` page object filled the fields, clicked "Log in", and returned immediately — nothing tied the method's return to login actually completing. The Bootstrap login modal fades in, and on Firefox — whose animation timing differs from Chromium and WebKit — the click occasionally landed before the modal had settled and was swallowed, so the `/login` request never went out. With no request, `#nameofuser` was never populated, and the assertion timed out against an element that would stay empty forever. The intermittency came entirely from animation timing, which is exactly what made it flaky.
+### What CI revealed that local runs didn't
+The next CI run failed in two distinct ways:
 
-### Fix
-Make `login()` atomic: it should return only once login has demonstrably completed. The cleanest deterministic signal is one the user can observe — Demoblaze closes the login modal only on a successful login, so waiting for the modal to disappear ties the method to real completion.
+1. **The negative-path test now failed deterministically on all three browsers.** `TC-002 Login with wrong password` also calls `login()`. On a wrong password Demoblaze does not close the modal — it raises a "Wrong password" alert and leaves the modal open. My `waitFor({ state: 'hidden' })` therefore never resolved and timed out every time. I had baked a *success* assumption into a method the *failure* path also depends on — the exact anti-pattern I had refactored out of my API client (baked-in `expect(200)`) earlier the same day, reintroduced in a new place.
+
+2. **The original flake was not fully gone.** On WebKit, the cart and checkout preconditions still failed intermittently with the same empty `#nameofuser`, passing only on retry. Waiting for the modal had not made the login itself more reliable; part of the flakiness was environmental — Demoblaze is an unreliable public demo whose `/login` is sometimes slow or unresponsive from the CI runner.
+
+### Root cause and fix
+Two separate causes hid behind one symptom: a design fault (a shared action method that assumed success) and an environmental fault (an unreliable third-party backend). The fix was to separate the action from its outcome, so the same login step serves both paths:
 
 ```javascript
+// Pure action — makes no assumption about success or failure.
+// Used by both the valid- and invalid-credential paths.
 async login(username, password) {
     await this.modal.waitFor({ state: 'visible' });
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
+}
 
-    // Demoblaze closes the modal only after a successful login.
-    // Waiting for it makes login() return only once login truly completed.
-    await this.modal.waitFor({ state: 'hidden' });
+// Happy path only: Demoblaze closes the modal only on a successful login.
+async loginExpectingSuccess(username, password) {
+    await this.login(username, password);
+    await this.modal.waitFor({ state: 'hidden', timeout: 15000 });
 }
 ```
 
-Verified by running the cart suite five times on Firefox (`--repeat-each=5`): 15/15 passed. A single green run would not have been evidence; the repetition is what demonstrates the flake is gone.
-
-### A design choice worth naming
-An alternative was to wait on the login network response directly (`page.waitForResponse(res => res.url().includes('/login'))`). That is more surgical — if the click is swallowed and no request is sent, it fails at exactly that point. But it couples the test to the application's internal wiring: if the endpoint path ever changed while the feature still worked, the test would break. Waiting for the modal to close is a black-box signal — it asserts what the user observes, not how the app is built — so it survives internal refactors. I chose the UI signal for resilience; the network wait remains the better tool when a swallowed click needs to be pinpointed rather than merely prevented.
+The negative test calls `login()` and asserts on the alert; the positive tests call `loginExpectingSuccess()`. TC-002 became deterministic again. The residual WebKit flake is environmental and is absorbed by scoped CI retries rather than pretended away — the correct disposition for a third-party demo I cannot change.
 
 ### Lesson
-A blind wait (`waitForTimeout`) and a deterministic wait look alike in code but are opposites in intent: one hopes the work is done, the other knows it is. The reflex to "just raise the timeout" was already disproven here — it was 25s and the element stayed empty throughout. The fix was not to wait longer but to wait for the *right thing*, and to prefer a signal the user can see over one tied to the application's internals.
+Passing locally is not the same as being correct. Five green runs on one browser and one path gave me false confidence and hid a deterministic regression on a path I had not exercised. Two lessons compounded: a success assumption does not belong in a method shared by the failure path, and not every flake is a test defect — telling the fixable design fault apart from the unavoidable environmental one is part of the diagnosis, not an excuse after it.
